@@ -15,21 +15,22 @@ Registration Page-
 
 Home page/Feed Section-
 <img src="https://github.com/its-navneet/VerTech/blob/master/home.jpg" width="250" height="500" />
+
 User Chats-
-<img src=" https://github.com/its-navneet/VerTech/blob/master/chats.jpg" width="250" height="500" />
+<img src="https://github.com/its-navneet/VerTech/blob/master/chats.jpg" width="250" height="500" />
 
 Specific Chat
 <img src="https://github.com/its-navneet/VerTech/blob/master/Individualchats.jpg" width="250" height="500" />
 
 Todo Projects-
-<img src=" https://github.com/its-navneet/VerTech/blob/master/projectstodolist.jpg" width="250" height="500" />
+<img src="https://github.com/its-navneet/VerTech/blob/master/projectstodolist.jpg" width="250" height="500" />
 
 
 Create Post-
 <img src="https://github.com/its-navneet/VerTech/blob/master/newpost.jpg" width="250" height="500" />
 
 Peer Search-
-<img src=" https://github.com/its-navneet/VerTech/blob/master/search.jpg)" width="250" height="500" />
+<img src="https://github.com/its-navneet/VerTech/blob/master/search.jpg" width="250" height="500" />
 
 User profile-
 <img src="https://github.com/its-navneet/VerTech/blob/master/myprofile.jpg" width="250" height="500" />
