@@ -11,30 +11,27 @@ Vertech is an ad free instant messaging and digital distribution platform where 
 
 ## Screenshots
 
-Registration Page- 
-![Register]( https://github.com/its-navneet/VerTech/blob/master/register.jpg)
-
 Home page/Feed Section-
-![feed]( https://github.com/its-navneet/VerTech/blob/master/home.jpg)
-
+![feed]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/home.jpg" width="250" height="500" />
 User Chats-
-![chat]( https://github.com/its-navneet/VerTech/blob/master/chats.jpg)
+![chat]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/chats.jpg" width="250" height="500" />
 
 Specific Chat
-![specific chat] (https://github.com/its-navneet/VerTech/blob/master/Individualchats.jpg)
+![specific chat]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/Individualchats.jpg" width="250" height="500" />
 
 Todo Projects-
-![todo]( https://github.com/its-navneet/VerTech/blob/master/projectstodolist.jpg)
+![todo]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/projectstodolist.jpg" width="250" height="500" />
 
 
 Create Post-
-![create post]( https://github.com/its-navneet/VerTech/blob/master/newpost.jpg)
+![create post] ]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/newpost.jpg" width="250" height="500" />
 
 Peer Search-
-![Peersearch]( https://github.com/its-navneet/VerTech/blob/master/search.jpg)
+![Peersearch]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/search.jpg" width="250" height="500" />
 
 User profile-
-![profile]( https://github.com/its-navneet/VerTech/blob/master/myprofile.jpg)
+![profile] ]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/myprofile.jpg" width="250" height="500" />
+
 
 ## Functionality and Components used
 
