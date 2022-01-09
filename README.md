@@ -19,7 +19,7 @@ Home page/Feed Section-
 User Chats-
 <img src="https://github.com/its-navneet/VerTech/blob/master/chats.jpg" width="250" height="500" />
 
-Specific Chat
+Specific Chat-
 <img src="https://github.com/its-navneet/VerTech/blob/master/Individualchats.jpg" width="250" height="500" />
 
 Todo Projects-
