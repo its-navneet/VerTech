@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">VerTech</string>
+    <string name="vertech">VerTech</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="web_client_id">848296753622-2nblah6dpj79c385am9uor4uni94la40.apps.googleusercontent.com</string>
+
+    <string name="user_details">
+<b>User Details</b>
+</string>
+    <string name="add_photo">
+<b>ADD PHOTO</b>
+</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_date_of_birth">Enter your date of birth</string>
+    <string name="proceed">
+<b>PROCEED</b>
+</string>
+    <string name="write_something_about_you">Write something about you</string>
+    <string name="year_of_graduation">Year of Graduation</string>
+    <string name="enter_your_domain">Enter your domain</string>
+
+    <string-array name="domains_res">
+        <item>Android Development</item>
+        <item>IOS Development</item>
+        <item>Web Development</item>
+        <item>AI/ML</item>
+        <item>DevOps</item>
+        <item>Cyber Security</item>
+        <item>Blockchain</item>
+        <item>Cloud Computing</item>
+    </string-array>
+</resources>

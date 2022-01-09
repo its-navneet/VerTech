@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mynavgraph.xml"
+    app:startDestination="@id/name">
+    <fragment
+        android:id="@+id/name"
+        android:name="com.example.android.vertech.Name"
+        android:label="fragment_name"
+        tools:layout="@layout/fragment_name" >
+        <action
+            android:id="@+id/action_name_to_email33"
+            app:destination="@id/email3" />
+    </fragment>
+    <fragment
+        android:id="@+id/email3"
+        android:name="com.example.android.vertech.Email"
+        android:label="fragment_email"
+        tools:layout="@layout/fragment_email" >
+        <action
+            android:id="@+id/action_email3_to_name2"
+            app:destination="@id/name" />
+    </fragment>
+</navigation>

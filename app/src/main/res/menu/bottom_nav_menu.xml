@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/search"
+        android:enabled="true"
+        android:icon="@drawable/search"
+        android:title="search"
+        app:cnb_iconColor="#DA6930B3"
+        app:cnb_textColor="#DA6930B3"
+        app:cnb_backgroundColor="@color/white"/>
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"
+        app:cnb_iconColor="#DA6930B3"
+        app:cnb_textColor="#DA6930B3"
+        app:cnb_backgroundColor="@color/white"/>
+    <item
+        android:id="@+id/chats"
+        android:enabled="true"
+        android:icon="@drawable/chat"
+        android:title="Chats"
+        app:cnb_iconColor="#DA6930B3"
+        app:cnb_textColor="#DA6930B3"
+        app:cnb_backgroundColor="@color/white"/>
+</menu>

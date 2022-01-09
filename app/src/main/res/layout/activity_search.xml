@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Search">
+
+    <FrameLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Search"
+                android:textSize="22dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:elevation="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="12dp"
+            app:cardCornerRadius="75dp"
+            android:background="@drawable/circular_shape"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/myProfile_search"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="2dp"
+                android:elevation="50dp"
+                android:background="@drawable/no_image2"/>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchbox"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="25dp"
+        android:layout_below="@id/topbar"
+        android:layout_marginTop="10dp"
+        >
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefresh_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav_bar"
+        android:layout_below="@id/searchbox"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginVertical="4dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_search"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/round_corners"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/bottom_nav_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        app:cnb_iconSize="30dp"
+        app:cnb_menuResource="@menu/bottom_nav_menu"
+        app:cnb_orientationMode="horizontal"
+        app:cnb_unselectedColor="@android:color/black" />
+</RelativeLayout>

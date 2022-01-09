@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorAccent">@android:color/holo_red_dark</color>
+
+    <color name="maintheme">#6930b3</color>
+
+
+    <!-- SignUp Screen -->
+    <color name="color_signup_text">#161F3D</color>
+    <color name="color_edt_line">#D8D8D8</color>
+    <color name="color_sign_button">#E9446A</color>
+    <!-- Test -->
+    <color name="color_primary">#00000000</color>
+    <color name="color_primary_dark">@android:color/black</color>
+    <color name="color_accent">#4285F4</color>
+    <color name="semi_transparent">#00000000</color>
+    <color name="color_opacity_black">#6F7487</color>
+
+    <color name="start">#E9446A</color>
+    <color name="center">#E9446A</color>
+    <color name="stop">#D81B60</color>
+    <color name="adobe_violet">#5C1D97</color>
+    <color name="hint_color">#585858</color>
+    <color name="transparent">#00000000</color>
+</resources>

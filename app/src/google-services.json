@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "848296753622",
+    "project_id": "vertech-1cdc6",
+    "storage_bucket": "vertech-1cdc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848296753622:android:35f843f480e6f98ecb0c77",
+        "android_client_info": {
+          "package_name": "com.example.android.vertech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848296753622-2nblah6dpj79c385am9uor4uni94la40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-A_pmuTHypofG-mkYGf28NzelgOApGU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848296753622-2nblah6dpj79c385am9uor4uni94la40.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

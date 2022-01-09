@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Log In"
+                android:textSize="23dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_vertical"
+                />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="150dp"
+        android:layout_height="160dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        app:srcCompat="@drawable/logo"
+        android:elevation="10dp"
+        >
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="@drawable/border"
+            android:layout_marginBottom="5dp"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/email"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="20dp"
+                android:layout_margin="8dp"
+                />
+
+        <EditText
+            android:id="@+id/email_edittext_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:textAlignment="gravity"
+            android:gravity="center_vertical"
+            android:textSize="18dp"
+            android:textColorHint="@color/hint_color"
+            android:background="@null"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/password"
+                android:layout_marginRight="20dp"
+                android:layout_margin="8dp"/>
+
+            <EditText
+                android:id="@+id/password_edittext_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textAlignment="gravity"
+                android:gravity="center_vertical"
+                android:hint="Password"
+                android:textSize="18dp"
+                android:background="@null"
+                android:textColorHint="@color/hint_color" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/login_button_login"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/maintheme"
+            android:text="Log In"
+            android:textSize="20dp"/>
+
+        <TextView
+            android:id="@+id/back_to_register_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_horizontal"
+            android:text="New User?"
+            android:textColor="#1C1C1C"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/loading_view_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_gravity="center_horizontal"
+            app:indicatorColor="@color/colorAccent"
+            app:indicatorName="SemiCircleSpinIndicator" />
+
+    </LinearLayout>
+</LinearLayout>

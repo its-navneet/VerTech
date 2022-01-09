@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:id="@+id/feeds_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/round_corners"
+        android:outlineAmbientShadowColor="#CBABF8"
+        app:cardElevation="10dp"
+        android:clickable="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/feeds_username"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="User"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#373535"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:clickable="false"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="280dp"
+                android:background="@drawable/round_corners"
+                android:clickable="false">
+
+                <ImageView
+                    android:id="@+id/feeds_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/uploadimage"
+                    android:clickable="false"/>
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:id="@+id/feeds_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="content"
+                android:textSize="18dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:clickable="false"
+                />
+
+
+                <TextView
+                    android:id="@+id/feeds_timestamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAlignment="textEnd"
+                    android:text="timestamp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
