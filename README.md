@@ -10,27 +10,30 @@ Initially every beginner finds it tough to start and work under a domain of thei
 Vertech is an ad free instant messaging and digital distribution platform where tech enthusiasts can jam with peers of their respective domains and collaborate on different projects. A league can share feeds of their amuse or new ideas of their respective domain. Many innovative ideas , projects can be cultivated on this user-friendly platform. The user can also maintain a to-do list of the projects to be done with his/her respective team mates. To avoid any delay in the flow of ideas, the user will have the liberty to have secure conversations through messaging with his peers.
 
 ## Screenshots
+Registration Page- 
+![Register]( https://github.com/its-navneet/VerTech/blob/master/register.jpg)
 
 Home page/Feed Section-
-![feed]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/home.jpg" width="250" height="500" />
+![feed]( https://github.com/its-navneet/VerTech/blob/master/home.jpg)
+
 User Chats-
-![chat]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/chats.jpg" width="250" height="500" />
+![chat]( https://github.com/its-navneet/VerTech/blob/master/chats.jpg)
 
 Specific Chat
-![specific chat]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/Individualchats.jpg" width="250" height="500" />
+![specific chat] (https://github.com/its-navneet/VerTech/blob/master/Individualchats.jpg)
 
 Todo Projects-
-![todo]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/projectstodolist.jpg" width="250" height="500" />
+![todo]( https://github.com/its-navneet/VerTech/blob/master/projectstodolist.jpg)
 
 
 Create Post-
-![create post] ]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/newpost.jpg" width="250" height="500" />
+![create post]( https://github.com/its-navneet/VerTech/blob/master/newpost.jpg)
 
 Peer Search-
-![Peersearch]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/search.jpg" width="250" height="500" />
+![Peersearch]( https://github.com/its-navneet/VerTech/blob/master/search.jpg)
 
 User profile-
-![profile] ]<img src="https://camo.githubusercontent.com/..." data-canonical-src="https://github.com/its-navneet/VerTech/blob/master/myprofile.jpg" width="250" height="500" />
+![profile]( https://github.com/its-navneet/VerTech/blob/master/myprofile.jpg)
 
 
 ## Functionality and Components used
