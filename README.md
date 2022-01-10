@@ -62,7 +62,7 @@ User profile-
 Demo Video
 
 Registration Page- 
-<img src="https://github.com/its-navneet/VerTech/blob/master/VerTech_Demo.gif" width="280" height="500" />
+<img src="https://github.com/its-navneet/VerTech/blob/master/VerTech_Demo.gif" width="280" height="550" />
 
 
 ## Application link & future scope-
