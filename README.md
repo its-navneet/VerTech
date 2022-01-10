@@ -61,7 +61,7 @@ User profile-
 
 Demo Video
 
-https://github.com/its-navneet/VerTech/blob/master/VID-20220110-WA0006.mp4
+https://github.com/its-navneet/VerTech/blob/master/VerTech_Demo.gif
 
 ## Application link & future scope-
 Currently our app is in the testing phase within our associates and technical clubs.You can access the app here: https://drive.google.com/file/d/128Pf0oA-7LETtYypuuJBKtUIILvQOylh/view?usp=sharing
