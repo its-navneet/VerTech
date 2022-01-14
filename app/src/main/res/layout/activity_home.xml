@@ -76,8 +76,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_nav_bar"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginBottom="10dp"
+        app:tint="@color/white"
+        app:backgroundTint="@color/maintheme"
         android:src="@drawable/ic_post_add_24dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -85,10 +87,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottom_nav_bar"
-        android:layout_marginBottom="10dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="10dp"
+        app:tint="@color/white"
         android:src="@drawable/ic_baseline_add_task_24"
-        android:layout_marginRight="50dp" />
+        app:backgroundTint="@color/maintheme" />
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/bottom_nav_bar"

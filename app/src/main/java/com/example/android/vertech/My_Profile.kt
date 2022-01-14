@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.latest_message_row.*
 class My_Profile : AppCompatActivity() {
     lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
-        lateinit var mGoogleSignInClient: GoogleSignInClient
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)

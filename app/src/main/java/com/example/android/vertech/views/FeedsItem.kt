@@ -17,7 +17,7 @@ class FeedsItem (val feeds: Feeds, val context: Context) : Item<ViewHolder>() {
     override fun bind(viewHolder: ViewHolder, position: Int) {
 
         if (!feeds.imagecontent!!.isEmpty()) {
-            val requestOptions = RequestOptions().placeholder(R.drawable.uploadimage)
+            val requestOptions = RequestOptions().placeholder(R.drawable.uploadimage).fitCenter().centerCrop()
             Glide.with(viewHolder.itemView.feeds_image.context)
                 .load(feeds.imagecontent)
                 .apply(requestOptions)

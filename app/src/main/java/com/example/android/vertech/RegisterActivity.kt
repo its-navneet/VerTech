@@ -3,6 +3,7 @@ package com.example.android.vertech
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -21,6 +22,7 @@ import java.util.*
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.io.ByteArrayOutputStream
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -36,9 +38,7 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar?.setCustomView(R.layout.abs_layout)
-        supportActionBar?.elevation = 0.0f
+
 
         // access the items of the list
         val domains= resources.getStringArray(R.array.domains_res)
@@ -139,13 +139,19 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun uploadImageToFirebaseStorage() {
+        // compressing image
+        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream)
+        val reducedImage: ByteArray = byteArrayOutputStream.toByteArray()
+
         if (selectedPhotoUri == null) {
             // save user without photo
             saveUserToFirebaseDatabase(null)
         } else {
             val filename = UUID.randomUUID().toString()
             val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
-            ref.putFile(selectedPhotoUri!!)
+            ref.putBytes(reducedImage)
                     .addOnSuccessListener {
                         Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
 

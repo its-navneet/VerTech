@@ -1,5 +1,6 @@
 package com.example.android.vertech.messages
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -21,7 +22,6 @@ import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.chat_to_row.view.*
 
 class ChatLogActivity : AppCompatActivity() {
-
     companion object {
         val TAG = ChatLogActivity::class.java.simpleName
     }
@@ -36,7 +36,7 @@ class ChatLogActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_log)
 
-        swiperefresh.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccent))
+        swiperefresh_chat.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccent))
 
         recyclerview_chat_log.adapter = adapter
 
@@ -50,8 +50,8 @@ class ChatLogActivity : AppCompatActivity() {
     }
 
     private fun listenForMessages() {
-        swiperefresh.isEnabled = true
-        swiperefresh.isRefreshing = true
+        swiperefresh_chat.isEnabled = true
+        swiperefresh_chat.isRefreshing = true
 
         val fromId = FirebaseAuth.getInstance().uid ?: return
         val toId = toUser?.uid
@@ -65,8 +65,8 @@ class ChatLogActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.d(TAG, "has children: " + dataSnapshot.hasChildren())
                 if (!dataSnapshot.hasChildren()) {
-                    swiperefresh.isRefreshing = false
-                    swiperefresh.isEnabled = false
+                    swiperefresh_chat.isRefreshing = false
+                    swiperefresh_chat.isEnabled = false
                 }
             }
         })
@@ -91,8 +91,8 @@ class ChatLogActivity : AppCompatActivity() {
                     }
                 }
                 recyclerview_chat_log.scrollToPosition(adapter.itemCount - 2)
-                swiperefresh.isRefreshing = false
-                swiperefresh.isEnabled = false
+                swiperefresh_chat.isRefreshing = false
+                swiperefresh_chat.isEnabled = false
             }
 
             override fun onChildRemoved(dataSnapshot: DataSnapshot) {
@@ -125,12 +125,12 @@ class ChatLogActivity : AppCompatActivity() {
 
         toReference.setValue(chatMessage)
 
-
         val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
         latestMessageRef.setValue(chatMessage)
 
         val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
         latestMessageToRef.setValue(chatMessage)
+
     }
 
 }

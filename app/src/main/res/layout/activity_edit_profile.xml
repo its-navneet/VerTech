@@ -54,6 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:orientation="horizontal"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/border">
 
@@ -66,7 +67,7 @@
                     android:layout_margin="8dp"/>
 
                 <EditText
-                    android:id="@+id/name_edittext_register"
+                    android:id="@+id/name_editProfile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="text"
@@ -95,7 +96,7 @@
                     android:layout_margin="8dp"/>
 
                 <EditText
-                    android:id="@+id/graduationUserdetails"
+                    android:id="@+id/graduation_editProfile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="number"
@@ -115,7 +116,7 @@
                 android:background="@drawable/border">
 
                 <EditText
-                    android:id="@+id/bioUserDetails"
+                    android:id="@+id/bio_editProfile"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
                     android:background="@null"
@@ -130,13 +131,11 @@
 
             <Button
                 android:id="@+id/update_btn"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:layout_gravity="end"
-                android:text="Update"
-                android:layout_margin="5dp"
-                android:backgroundTint="@color/maintheme"/>
-
+                android:backgroundTint="@color/maintheme"
+                android:text="Update" />
 
             <com.wang.avi.AVLoadingIndicatorView
                 android:id="@+id/loading_view_register"

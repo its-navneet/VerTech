@@ -6,16 +6,16 @@
         android:id="@+id/feeds_box"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/round_corners"
-        android:outlineAmbientShadowColor="#CBABF8"
         app:cardElevation="10dp"
         android:clickable="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginBottom="6dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/round_corners2">
 
             <TextView
                 android:id="@+id/feeds_username"
@@ -23,8 +23,9 @@
                 android:layout_height="50dp"
                 android:text="User"
                 android:textSize="20dp"
+                android:background="@drawable/round_corners3"
                 android:textStyle="bold"
-                android:textColor="#373535"
+                android:textColor="@color/white"
                 android:gravity="center_vertical"
                 android:padding="8dp"
                 android:clickable="false"
@@ -32,16 +33,16 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
+                android:layout_height="wrap_content"
                 android:background="@drawable/round_corners"
                 android:clickable="false">
 
                 <ImageView
                     android:id="@+id/feeds_image"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/uploadimage"
-                    android:clickable="false"/>
+                    android:layout_height="350dp"
+                    android:clickable="false"
+                    android:src="@drawable/uploadimage" />
             </androidx.cardview.widget.CardView>
 
 
@@ -51,12 +52,11 @@
                 android:layout_height="wrap_content"
                 android:text="content"
                 android:textSize="18dp"
+                android:textColor="@color/black"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:clickable="false"
                 />
-
-
                 <TextView
                     android:id="@+id/feeds_timestamp"
                     android:layout_width="match_parent"

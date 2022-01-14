@@ -20,6 +20,7 @@ import com.google.firebase.database.*
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_latest_messages.*
 import kotlinx.android.synthetic.main.activity_latest_messages.swiperefresh_message
 import kotlinx.android.synthetic.main.activity_search.*
@@ -47,22 +48,21 @@ class LatestMessagesActivity : AppCompatActivity() {
         myProfile_latest_messages.setOnClickListener(){
             startActivity(Intent(this@LatestMessagesActivity,My_Profile::class.java))
         }
-        val userUid= FirebaseAuth.getInstance().uid
+        val userUid = FirebaseAuth.getInstance().uid
         database = FirebaseDatabase.getInstance().getReference("users")
-        database.child(userUid!!)?.orderByChild("timestamp").get().addOnSuccessListener {
-            if(it.exists()){
+        database.child(userUid!!)?.get().addOnSuccessListener {
+            if (it.exists()) {
                 val requestOptions = RequestOptions()
-                val picUrl=it.child("profileImageUrl").value
+                val picUrl = it.child("profileImageUrl").value
                 Glide.with(myProfile_latest_messages.context)
                     .load(picUrl)
                     .apply(requestOptions)
                     .into(myProfile_latest_messages)
+            } else {
+                Toast.makeText(this, "Failed", 500)
             }
-            else{
-                Toast.makeText(this,"Failed",500)
-            }
-        }.addOnFailureListener(){
-            Log.d(RegisterActivity.TAG, "failed")
+        }.addOnFailureListener() {
+            Log.d(LatestMessagesActivity.TAG, "failed")
         }
 
         recyclerview_latest_messages.adapter = adapter

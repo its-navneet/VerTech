@@ -16,7 +16,7 @@ class splash : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
-        }, 3500) // 3000 is the delayed time in milliseconds.
+        }, 3200) // 3200 is the delayed time in milliseconds.
     }
 
 }

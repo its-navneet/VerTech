@@ -30,17 +30,15 @@
         <activity
             android:name=".messages.LatestMessagesActivity"
             android:exported="true"
-            android:screenOrientation="portrait" />
+            />
         <activity
             android:name=".RegisterActivity"
-            android:configChanges="orientation|keyboard|screenSize"
-            android:screenOrientation="portrait" />
+            android:configChanges="orientation|keyboard|screenSize" />
         <activity
             android:name=".LoginActivity"
-            android:screenOrientation="portrait" />
+            />
         <activity
-            android:name=".messages.NewMessageActivity"
-            android:screenOrientation="portrait">
+            android:name=".messages.NewMessageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".messages.LatestMessagesActivity" />
@@ -58,18 +56,15 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".messages.ChatLogActivity"
-            android:screenOrientation="portrait">
+            android:name=".messages.ChatLogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".messages.LatestMessagesActivity" />
         </activity>
         <activity
-            android:name=".new_post"
-            android:screenOrientation="portrait" />
+            android:name=".new_post" />
         <activity
-            android:name=".My_Profile"
-            android:screenOrientation="portrait" />
+            android:name=".My_Profile" />
     </application>
 
 </manifest>

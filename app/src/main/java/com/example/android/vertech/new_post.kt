@@ -2,6 +2,7 @@ package com.example.android.vertech
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -22,6 +23,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_latest_messages.*
 import kotlinx.android.synthetic.main.activity_new_post.*
 import kotlinx.android.synthetic.main.feed_content.*
+import java.io.ByteArrayOutputStream
 import java.util.*
 
 class new_post : AppCompatActivity() {
@@ -36,8 +38,6 @@ class new_post : AppCompatActivity() {
             sendNewFeed()
 
         }
-
-
         selectphoto_imageview_feed.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
@@ -57,7 +57,6 @@ class new_post : AppCompatActivity() {
                 val columnIndex = it.getColumnIndex(filePathColumn[0])
                 val picturePath = it.getString(columnIndex)
                 // If picture chosen from camera rotate by 270 degrees else
-
                     Picasso.get().load(selectedPhotoUri).into(selectphoto_imageview_feed)
             }
         }
@@ -81,13 +80,19 @@ class new_post : AppCompatActivity() {
 
 
     fun uploadImageToFirebaseStorage() {
+        // compressing image
+        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
+        val byteArrayOutputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStream)
+        val reducedImage: ByteArray = byteArrayOutputStream.toByteArray()
+
         if (selectedPhotoUri == null) {
             // save user without photo
             saveUserToFirebaseDatabase(null)
         } else {
             val filename = UUID.randomUUID().toString()
             val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
-            ref.putFile(selectedPhotoUri!!)
+            ref.putBytes(reducedImage)
                 .addOnSuccessListener {
                     Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
@@ -119,12 +124,10 @@ class new_post : AppCompatActivity() {
                     Feeds(uid,name.toString(), feedsImageUrl,feed_text_content.text.toString(),System.currentTimeMillis() / 1000)
                 }
 
-
-
                 ref.setValue(feed)
                     .addOnSuccessListener {
                         Log.d(TAG, "Finally we saved the user to Firebase Database")
-
+                        Toast.makeText(this,"Post uploaded successfully",LENGTH_SHORT)
                         val intent = Intent(this, Home::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)

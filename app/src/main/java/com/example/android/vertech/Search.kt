@@ -3,6 +3,7 @@ package com.example.android.vertech
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,13 +12,10 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.android.vertech.RegisterActivity.Companion.TAG
 import com.example.android.vertech.messages.ChatLogActivity
 import com.example.android.vertech.messages.LatestMessagesActivity
 import com.example.android.vertech.messages.NewMessageActivity
-import com.example.android.vertech.messages.UserItem
 import com.example.android.vertech.models.User
-import com.example.android.vertech.new_post
 import com.example.android.vertech.views.BigImageDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -36,6 +34,7 @@ class Search : AppCompatActivity() {
         const val USER_KEY = "USER_KEY"
         private val TAG = Search::class.java.simpleName
     }
+    var mMediaPlayer: MediaPlayer? = null
     lateinit var database: DatabaseReference
     var chipNavigationBar: ChipNavigationBar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,7 +79,23 @@ class Search : AppCompatActivity() {
         bottomMenu()
     }
 
+    // 1. Plays the water sound
+    fun playSound() {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, R.raw.refresh)
+            mMediaPlayer!!.isLooping = true
+            mMediaPlayer!!.start()
+        } else mMediaPlayer!!.start()
+    }
+
+    // 2. Pause playback
+    fun pauseSound() {
+        if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) mMediaPlayer!!.pause()
+    }
+
     private fun fetchUsers() {
+        playSound()
+        pauseSound()
         swiperefresh_search.isRefreshing = true
 
         val ref = FirebaseDatabase.getInstance().getReference("/users")

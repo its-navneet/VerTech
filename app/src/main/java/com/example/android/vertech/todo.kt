@@ -40,8 +40,11 @@ class todo : AppCompatActivity(),RecyclerViewAdapter.RowClickListener {
                 val user = UserEntity(0, name, email, phone)
                 viewModel.insertUserInfo(user)
             } else {
-                val user = UserEntity(projectName.getTag(projectDescription.id).toString().toInt(), name, email, phone)
+                val user = UserEntity(projectName.getTag(projectName.id).toString().toInt(), name, email, phone)
                 viewModel.updateUserInfo(user)
+                projectName.text=null
+                projectDescription.text=null
+                projectMembers.text=null
                 addButton.setText("Add")
             }
             projectName.setText("")

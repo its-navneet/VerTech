@@ -3,6 +3,26 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/round_corners.xml" value="0.26614583333333336" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/round_corners2.xml" value="0.14322916666666666" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/view.xml" value="0.26205128205128203" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable/ic_baseline_add_task_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable/round_corners.xml" value="0.26614583333333336" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable/round_corners3.xml" value="0.14322916666666666" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/abs_layout.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_chat_log.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_details.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_home.xml" value="0.23703703703703705" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_latest_messages.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_my_profile.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_register.xml" value="0.24259259259259258" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/activity_todo.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/chat_from_row.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/feed_content.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/latest_message_row.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/layout/recyclerview_row.xml" value="0.25" />
+        <entry key="..\:/Vertech2/Vertech/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25" />
         <entry key="..\:/Vertech2/Vertech2/app/src/main/res/drawable-v24/border2.xml" value="0.26205128205128203" />
         <entry key="..\:/Vertech2/Vertech2/app/src/main/res/drawable-v24/round_corners2.xml" value="0.2361111111111111" />
         <entry key="..\:/Vertech2/Vertech2/app/src/main/res/drawable-v24/rounded_edittext_register_login.xml" value="0.2361111111111111" />

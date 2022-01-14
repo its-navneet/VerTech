@@ -1,9 +1,8 @@
 package com.example.android.vertech
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,20 +11,13 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.vertech.RegisterActivity.Companion.TAG
-import com.example.android.vertech.messages.ChatLogActivity
 import com.example.android.vertech.messages.LatestMessagesActivity
-import com.example.android.vertech.messages.NewMessageActivity
-import com.example.android.vertech.messages.UserItem
-import com.example.android.vertech.models.ChatMessage
 import com.example.android.vertech.models.Feeds
-import com.example.android.vertech.models.User
-import com.example.android.vertech.views.BigImageDialog
 import com.example.android.vertech.views.FeedsItem
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_latest_messages.*
@@ -40,6 +32,7 @@ class Home : AppCompatActivity() {
     lateinit var database: DatabaseReference
     private val adapter = GroupAdapter<ViewHolder>()
     private val latestFeedsMap = HashMap<String, Feeds>()
+    var mMediaPlayer: MediaPlayer? = null
 
     companion object {
         const val USER_KEY = "USER_KEY"
@@ -121,8 +114,23 @@ class Home : AppCompatActivity() {
             }
         })
     }
+    // 1. Plays the water sound
+    fun playSound() {
+        if (mMediaPlayer == null) {
+            mMediaPlayer = MediaPlayer.create(this, R.raw.refresh)
+            mMediaPlayer!!.isLooping = true
+            mMediaPlayer!!.start()
+        } else mMediaPlayer!!.start()
+    }
+
+    // 2. Pause playback
+    fun pauseSound() {
+        if (mMediaPlayer != null && mMediaPlayer!!.isPlaying) mMediaPlayer!!.pause()
+    }
 
     private fun fetchFeeds() {
+        playSound()
+        pauseSound()
         swiperefresh_feeds.isRefreshing=true
 
         val ref = FirebaseDatabase.getInstance().getReference("/feeds")
