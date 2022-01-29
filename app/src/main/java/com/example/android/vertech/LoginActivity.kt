@@ -7,16 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import com.example.android.vertech.messages.LatestMessagesActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.vertech.RegisterActivity.Companion.TAG
+import com.example.android.vertech.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_my_profile.*
 import kotlinx.android.synthetic.main.activity_register.*
 
 class LoginActivity : AppCompatActivity() {
+    private var mAuth: FirebaseAuth? = null
 
     private val TAG = LoginActivity::class.java.simpleName
+    lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -25,10 +33,15 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar?.setCustomView(R.layout.abs_layout)
         supportActionBar!!.elevation = 0.0f
+        mAuth = FirebaseAuth.getInstance()
 
 
         login_button_login.setOnClickListener {
             performLogin()
+        }
+
+        resetpassword.setOnClickListener() {
+            startActivity(Intent(this,ForgotPassword::class.java))
         }
 
         back_to_register_textview.setOnClickListener {

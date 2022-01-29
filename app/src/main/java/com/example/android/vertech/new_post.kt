@@ -38,7 +38,7 @@ class new_post : AppCompatActivity() {
             sendNewFeed()
 
         }
-        selectphoto_imageview_feed.setOnClickListener {
+        add_post_photo.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
             startActivityForResult(intent, 0)
@@ -112,10 +112,9 @@ class new_post : AppCompatActivity() {
 
     private fun saveUserToFirebaseDatabase(feedsImageUrl: String?) {
         val uid = FirebaseAuth.getInstance().uid ?: return
-        lateinit var database : DatabaseReference
         val ref = FirebaseDatabase.getInstance().getReference("/feeds/$uid")
-        database = FirebaseDatabase.getInstance().getReference("users")
-        database.child(uid!!)?.get().addOnSuccessListener {
+        var database : DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
+        database.child(uid).get().addOnSuccessListener {
             if(it.exists()){
                 val name=it.child("name").value
                 val feed = if (feedsImageUrl == null) {
@@ -127,7 +126,7 @@ class new_post : AppCompatActivity() {
                 ref.setValue(feed)
                     .addOnSuccessListener {
                         Log.d(TAG, "Finally we saved the user to Firebase Database")
-                        Toast.makeText(this,"Post uploaded successfully",LENGTH_SHORT)
+                        Toast.makeText(this,"Post uploaded successfully",LENGTH_SHORT).show()
                         val intent = Intent(this, Home::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
@@ -139,7 +138,7 @@ class new_post : AppCompatActivity() {
 
             }
             else{
-                Toast.makeText(this,"Failed",LENGTH_SHORT)
+                Toast.makeText(this,"Failed",LENGTH_SHORT).show()
             }
         }.addOnFailureListener(){
             Log.d(TAG, "failed")

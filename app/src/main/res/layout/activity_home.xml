@@ -101,6 +101,7 @@
         android:layout_alignParentBottom="true"
         android:elevation="8dp"
         app:cnb_iconSize="30dp"
+        android:background="@color/white"
         app:cnb_menuResource="@menu/bottom_nav_menu"
         app:cnb_orientationMode="horizontal"
         app:cnb_unselectedColor="@android:color/black" />

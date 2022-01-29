@@ -7,6 +7,7 @@ import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.SearchView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.core.content.ContextCompat
@@ -34,6 +35,7 @@ class Search : AppCompatActivity() {
         const val USER_KEY = "USER_KEY"
         private val TAG = Search::class.java.simpleName
     }
+    lateinit var searchView: SearchView
     var mMediaPlayer: MediaPlayer? = null
     lateinit var database: DatabaseReference
     var chipNavigationBar: ChipNavigationBar? = null
@@ -51,12 +53,27 @@ class Search : AppCompatActivity() {
             fetchUsers()
         }
 
+        searchView=findViewById(R.id.searchbar)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
+                processSearch(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                processSearch(newText)
+                return false
+            }
+        })
+
         myProfile_search.setOnClickListener() {
             startActivity(Intent(this@Search, My_Profile::class.java))
         }
         val userUid = FirebaseAuth.getInstance().uid
         database = FirebaseDatabase.getInstance().getReference("users")
-        database.child(userUid!!)?.get().addOnSuccessListener {
+        database.child(userUid!!).get().addOnSuccessListener {
             if (it.exists()) {
                 val requestOptions = RequestOptions()
                 val picUrl = it.child("profileImageUrl").value
@@ -77,6 +94,42 @@ class Search : AppCompatActivity() {
             true
         )
         bottomMenu()
+    }
+
+    private fun processSearch(s: String?) {
+        val ref = FirebaseDatabase.getInstance().getReference("/users")
+        val queryRequest_domain: Query = ref.orderByChild("domain").startAt(s).endAt(s+"\uf8ff")
+        queryRequest_domain.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError) {}
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val adapter = GroupAdapter<ViewHolder>()
+                dataSnapshot.children.forEach {
+                    @Suppress("NestedLambdaShadowedImplicitParameter")
+                    it.getValue(User::class.java)?.let {
+                        if (it.uid != FirebaseAuth.getInstance().uid) {
+                            adapter.add(UserItem(it, this@Search))
+                        }
+                    }
+                }
+                recyclerview_search.adapter = adapter
+            }
+        })
+        val queryRequest_name: Query = ref.orderByChild("name").startAt(s).endAt(s+"\uf8ff")
+        queryRequest_name.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError) {}
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val adapter = GroupAdapter<ViewHolder>()
+                dataSnapshot.children.forEach {
+                    @Suppress("NestedLambdaShadowedImplicitParameter")
+                    it.getValue(User::class.java)?.let {
+                        if (it.uid != FirebaseAuth.getInstance().uid) {
+                            adapter.add(UserItem(it, this@Search))
+                        }
+                    }
+                }
+                recyclerview_search.adapter = adapter
+            }
+        })
     }
 
     // 1. Plays the water sound
@@ -101,12 +154,10 @@ class Search : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.orderByChild("name").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
-
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val adapter = GroupAdapter<ViewHolder>()
-
                 dataSnapshot.children.forEach {
                     Log.d(TAG, it.toString())
                     @Suppress("NestedLambdaShadowedImplicitParameter")
@@ -120,8 +171,8 @@ class Search : AppCompatActivity() {
 
                 adapter.setOnItemClickListener { item, view ->
                     val userItem = item as UserItem
-                    val intent = Intent(view.context, ChatLogActivity::class.java)
-                    intent.putExtra(NewMessageActivity.USER_KEY, userItem.user)
+                    val intent = Intent(view.context, UserProfile::class.java)
+                    intent.putExtra(UserProfile.USER_KEY, userItem.user)
                     startActivity(intent)
                 }
 
@@ -160,8 +211,6 @@ class Search : AppCompatActivity() {
             viewHolder.itemView.username_textview_new_message.text = user.name
             viewHolder.itemView.domain.text= user.domain
             viewHolder.itemView.graduation_year.text=user.graduation
-
-
             if (!user.profileImageUrl!!.isEmpty()) {
                 val requestOptions = RequestOptions().placeholder(R.drawable.no_image2)
                 Glide.with(viewHolder.itemView.imageview_new_message.context)
@@ -176,8 +225,6 @@ class Search : AppCompatActivity() {
                 }
             }
         }
-
-
         override fun getLayout(): Int {
             return R.layout.user_row_new_message
         }

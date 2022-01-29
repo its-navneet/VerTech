@@ -17,6 +17,14 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_my_profile.*
+import kotlinx.android.synthetic.main.activity_my_profile.back
+import kotlinx.android.synthetic.main.activity_my_profile.biotext
+import kotlinx.android.synthetic.main.activity_my_profile.email
+import kotlinx.android.synthetic.main.activity_my_profile.profile_domain
+import kotlinx.android.synthetic.main.activity_my_profile.profile_graduation
+import kotlinx.android.synthetic.main.activity_my_profile.profile_username
+import kotlinx.android.synthetic.main.activity_my_profile.profilepic
+import kotlinx.android.synthetic.main.activity_user_profile.*
 import kotlinx.android.synthetic.main.latest_message_row.*
 
 class My_Profile : AppCompatActivity() {

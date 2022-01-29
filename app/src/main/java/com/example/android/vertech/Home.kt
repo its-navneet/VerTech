@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -22,6 +23,7 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_latest_messages.*
 import kotlinx.android.synthetic.main.activity_new_message.*
+import kotlinx.android.synthetic.main.activity_new_post.*
 import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.feed_content.view.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
@@ -37,7 +39,6 @@ class Home : AppCompatActivity() {
     companion object {
         const val USER_KEY = "USER_KEY"
     }
-
 
     var chipNavigationBar: ChipNavigationBar? = null
 
@@ -58,7 +59,7 @@ class Home : AppCompatActivity() {
                     .apply(requestOptions)
                     .into(myProfile_home)
             } else {
-                Toast.makeText(this, "Failed", 500)
+                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener() {
             Log.d(TAG, "failed")
@@ -140,7 +141,6 @@ class Home : AppCompatActivity() {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val adapter = GroupAdapter<ViewHolder>()
-
                 dataSnapshot.children.forEach {
                     it.getValue(Feeds::class.java)?.let {
                         if (it.senderid != FirebaseAuth.getInstance().uid) {
@@ -148,18 +148,15 @@ class Home : AppCompatActivity() {
                         }
                     }
                 }
-
                 adapter.setOnItemClickListener { item, view ->
                     val feedItem = item as FeedsItem
                     val intent = Intent(view.context, Home::class.java)
                     startActivity(intent)
                     finish()
                 }
-
                 recyclerview_feeds.adapter = adapter
                 swiperefresh_feeds.isRefreshing = false
             }
-
         })
     }
 }

@@ -1,8 +1,8 @@
 package com.example.android.vertech.messages
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -20,6 +20,12 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_chat_log.*
 import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.chat_to_row.view.*
+import android.R.color
+
+import android.view.WindowManager
+
+
+
 
 class ChatLogActivity : AppCompatActivity() {
     companion object {
@@ -181,7 +187,6 @@ class ChatToItem(val text: String, val user: User, val timestamp: Long) : Item<V
                     .thumbnail(0.1f)
                     .apply(requestOptions)
                     .into(targetImageView)
-
         }
     }
 

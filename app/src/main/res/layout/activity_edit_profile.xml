@@ -31,14 +31,21 @@
             android:orientation="vertical"
             android:layout_marginHorizontal="25dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/selectphoto_imageview_update"
-                android:layout_marginTop="20dp"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                app:cardCornerRadius="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_centerInParent="true"
-                android:src="@drawable/defaultpicuserdetails"/>
+                android:backgroundTint="@color/black">
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/selectphoto_imageview_update"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/profile_dummy"
+                    />
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/selectphoto_button_register"
@@ -47,6 +54,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center"
                 android:text="@string/add_photo"
+                android:textColor="@color/white"
                 android:backgroundTint="@color/maintheme"/>
 
 
@@ -81,31 +89,29 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/border">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/calender"
-                    android:layout_marginRight="20dp"
-                    android:layout_margin="8dp"/>
-
-                <EditText
-                    android:id="@+id/graduation_editProfile"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="number"
-                    android:textAlignment="gravity"
-                    android:gravity="center_vertical"
-                    android:hint="Graduation Year"
-                    android:textSize="18dp"
-                    android:background="@null"
-                    android:textColorHint="@color/hint_color" />
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/border"
+                android:layout_marginBottom="10dp">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:hint="Your Domain"
+                        android:padding="6dp"
+                        android:textColor="#191919"
+                        android:textColorHint="@color/hint_color"
+                        />
+                    <Spinner
+                        android:id="@+id/domain_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Your Domain"
+                        />
             </LinearLayout>
 
             <LinearLayout
@@ -135,6 +141,7 @@
                 android:layout_height="60dp"
                 android:layout_gravity="end"
                 android:backgroundTint="@color/maintheme"
+                android:textColor="@color/white"
                 android:text="Update" />
 
             <com.wang.avi.AVLoadingIndicatorView

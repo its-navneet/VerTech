@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@drawable/view">
 
         <TextView
@@ -31,28 +31,36 @@
             android:orientation="vertical"
             android:layout_marginHorizontal="25dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/selectphoto_imageview_register"
-                android:layout_marginTop="20dp"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                app:cardCornerRadius="300dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_centerInParent="true"
-                android:src="@drawable/defaultpicuserdetails"/>
+                android:backgroundTint="@color/black">
+                <pl.droidsonroids.gif.GifImageView
+                    android:id="@+id/selectphoto_imageview_register"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/profile_dummy"
+                    />
+            </androidx.cardview.widget.CardView>
 
             <Button
                 android:id="@+id/selectphoto_button_register"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center"
                 android:text="@string/add_photo"
+                android:textColor="@color/white"
                 android:backgroundTint="@color/maintheme"/>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="52dp"
                 android:orientation="horizontal"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/border">
@@ -80,7 +88,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="52dp"
                 android:orientation="horizontal"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/border">
@@ -108,7 +116,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
+                android:layout_height="52dp"
                 android:orientation="horizontal"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/border">
@@ -134,38 +142,9 @@
                     android:textColorHint="@color/hint_color" />
             </LinearLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="55dp"
-                android:orientation="horizontal"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/border">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/calender"
-                    android:layout_marginRight="20dp"
-                    android:layout_margin="8dp"/>
-
-                <EditText
-                    android:id="@+id/graduationUserdetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="number"
-                    android:textAlignment="gravity"
-                    android:gravity="center_vertical"
-                    android:hint="Graduation Year"
-                    android:textSize="18dp"
-                    android:background="@null"
-                    android:textColorHint="@color/hint_color" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="70dp"
                 android:orientation="horizontal"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/border">
@@ -173,7 +152,7 @@
                 <EditText
                     android:id="@+id/bioUserDetails"
                     android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:layout_height="match_parent"
                     android:background="@null"
                     android:gravity="top"
                     android:padding="8dp"
@@ -183,22 +162,63 @@
                     android:textSize="18dp" />
             </LinearLayout>
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#191919"
-                android:text="Choose your Domain"
-                />
+                android:layout_height="65dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:autofillHints="Select your Domain"
-                android:layout_marginBottom="5dp"
-                />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/border">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:hint="Your Domain"
+                        android:paddingLeft="6dp"
+                        android:textColor="#191919"
+                        android:textColorHint="@color/hint_color"
+                        />
+                    <Spinner
+                        android:id="@+id/domain_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="Your Domain"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@drawable/border">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:textColor="#191919"
+                        android:paddingLeft="6dp"
+                        android:gravity="start"
+                        android:hint="Graduation Year"
+                        android:textColorHint="@color/hint_color"
+                        />
+                    <Spinner
+                        android:id="@+id/gyear_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:autofillHints="Your Graduation Year"
+                        android:layout_gravity="end"
+                        android:paddingLeft="7dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/register_button_register"
@@ -206,8 +226,8 @@
                 android:layout_height="55dp"
                 android:layout_gravity="end"
                 android:text="@string/proceed"
-                android:layout_marginTop="5dp"
                 android:textSize="20dp"
+                android:textColor="@color/white"
                 android:backgroundTint="@color/maintheme"/>
 
 
@@ -219,8 +239,8 @@
                 android:layout_marginBottom="30dp"
                 android:layout_gravity="center_horizontal"
                 android:text="Already have an account?"
-                android:textColor="@android:color/black"
-                android:textSize="18dp"
+                android:textColor="#FF5F7A"
+                android:textSize="19dp"
                 android:padding="4dp"
                 android:textStyle="bold"/>
 

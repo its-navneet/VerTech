@@ -45,8 +45,10 @@
                 android:background="@drawable/rounded_edittext_register_login"
                 android:ems="10"
                 android:hint="Type a message"
+                android:textColorHint="#4B4A4A"
                 android:inputType="text"
                 android:paddingLeft="16dp"
+                android:textColor="#181818"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/send_button_chat_log"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,45 +61,13 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_send_black_24dp"
+                app:tint="@color/white"
+                android:src="@drawable/ic_baseline_send_24"
+                app:backgroundTint="@color/maintheme"
                 app:fabCustomSize="45dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <!--<EditText-->
-        <!--android:id="@+id/edittext_chat_log"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:layout_marginStart="8dp"-->
-        <!--android:ems="10"-->
-        <!--android:hint="Enter Message"-->
-        <!--android:background="@android:color/white"-->
-        <!--android:inputType="textPersonName"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toStartOf="@+id/send_button_chat_log"-->
-        <!--app:layout_constraintStart_toStartOf="parent"/>-->
-
-        <!--<Button-->
-        <!--android:id="@+id/send_button_chat_log"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:layout_marginEnd="8dp"-->
-        <!--android:background="@drawable/rounded_button"-->
-        <!--android:text="Send"-->
-        <!--android:textColor="@android:color/white"-->
-        <!--android:textStyle="bold"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--/>-->
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

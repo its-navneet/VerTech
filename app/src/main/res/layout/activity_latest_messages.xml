@@ -41,8 +41,7 @@
                 android:layout_height="36dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginLeft="2dp"
-                android:elevation="50dp"
-                android:background="@drawable/no_image2"/>
+                android:elevation="50dp" />
         </androidx.cardview.widget.CardView>
     </FrameLayout>
 
@@ -84,6 +83,7 @@
         android:layout_alignParentBottom="true"
         android:elevation="8dp"
         app:cnb_iconSize="30dp"
+        android:background="@color/white"
         app:cnb_menuResource="@menu/bottom_nav_menu"
         app:cnb_orientationMode="horizontal"
         app:cnb_unselectedColor="@android:color/black" />

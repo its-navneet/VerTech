@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vertech">
         <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
             android:name=".Details"
             android:exported="false" />
         <activity
@@ -17,7 +23,7 @@
             android:exported="false" />
         <activity
             android:name=".EditProfile"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".GettingStarted"
             android:exported="false" />
@@ -29,16 +35,12 @@
             android:exported="false" />
         <activity
             android:name=".messages.LatestMessagesActivity"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:configChanges="orientation|keyboard|screenSize" />
-        <activity
-            android:name=".LoginActivity"
-            />
-        <activity
-            android:name=".messages.NewMessageActivity">
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".messages.NewMessageActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".messages.LatestMessagesActivity" />
@@ -55,16 +57,13 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity
-            android:name=".messages.ChatLogActivity">
+        <activity android:name=".messages.ChatLogActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".messages.LatestMessagesActivity" />
         </activity>
-        <activity
-            android:name=".new_post" />
-        <activity
-            android:name=".My_Profile" />
+        <activity android:name=".new_post" />
+        <activity android:name=".My_Profile" />
     </application>
 
 </manifest>

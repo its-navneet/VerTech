@@ -20,14 +20,14 @@
             <TextView
                 android:id="@+id/feeds_username"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="45dp"
                 android:text="User"
                 android:textSize="20dp"
                 android:background="@drawable/round_corners3"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:gravity="center_vertical"
-                android:padding="8dp"
+                android:paddingLeft="10dp"
                 android:clickable="false"
                 />
 
@@ -40,7 +40,8 @@
                 <ImageView
                     android:id="@+id/feeds_image"
                     android:layout_width="match_parent"
-                    android:layout_height="350dp"
+                    android:layout_height="340dp"
+                    android:scaleType="centerCrop"
                     android:clickable="false"
                     android:src="@drawable/uploadimage" />
             </androidx.cardview.widget.CardView>

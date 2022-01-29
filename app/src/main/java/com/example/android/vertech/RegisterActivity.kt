@@ -29,6 +29,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private var selectedPhotoUri: Uri? = null
     var domain: String =""
+    var graduationUserdetails:String = ""
 
     companion object {
         val TAG = RegisterActivity::class.java.simpleName!!
@@ -42,28 +43,51 @@ class RegisterActivity : AppCompatActivity() {
 
         // access the items of the list
         val domains= resources.getStringArray(R.array.domains_res)
+        val graduation = resources.getStringArray(R.array.gyear_res)
 
-        // access the spinner
-        val spinner = findViewById<Spinner>(R.id.spinner)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(
+        // access the domain spinner
+        val spinner_domain = findViewById<Spinner>(R.id.domain_spinner)
+        if (spinner_domain != null) {
+            val adapter_domain = ArrayAdapter(
                 this,
                 android.R.layout.simple_spinner_item, domains
             )
-            spinner.adapter = adapter
+            spinner_domain.adapter = adapter_domain
 
-            spinner.onItemSelectedListener = object :
+            spinner_domain.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
                     parent: AdapterView<*>,
                     view: View, position: Int, id: Long
                 ) {
-
                     domain= domains[position].toString()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
                     // write code to perform some action
+                }
+            }
+
+            // access the spinner
+            val spinner_gyear = findViewById<Spinner>(R.id.gyear_spinner)
+            if (spinner_gyear != null) {
+                val adapter_gyear = ArrayAdapter(
+                    this,
+                    android.R.layout.simple_spinner_item, graduation
+                )
+                spinner_gyear.adapter = adapter_gyear
+
+                spinner_gyear.onItemSelectedListener = object :
+                    AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View, position: Int, id: Long
+                    ) {
+                        graduationUserdetails = graduation[position].toString()
+                    }
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                        // write code to perform some action
+                    }
                 }
             }
         }
@@ -105,7 +129,7 @@ class RegisterActivity : AppCompatActivity() {
         val email = email_edittext_register.text.toString()
         val password = password_edittext_register.text.toString()
         val name = name_edittext_register.text.toString()
-        val graduation=graduationUserdetails.text.toString()
+        val graduation=graduationUserdetails
         val bio=bioUserDetails.text.toString()
 
         if (email.isEmpty() || password.isEmpty() || name.isEmpty() || graduation.isEmpty() || bio.isEmpty() || domain.isEmpty()) {
@@ -175,9 +199,9 @@ class RegisterActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
         val user = if (profileImageUrl == null) {
-            User(uid, email_edittext_register.text.toString(), name_edittext_register.text.toString(), null,graduationUserdetails.text.toString(),domain,bioUserDetails.text.toString())
+            User(uid, email_edittext_register.text.toString(), name_edittext_register.text.toString(), null,graduationUserdetails,domain,bioUserDetails.text.toString())
         } else {
-            User(uid,email_edittext_register.text.toString(), name_edittext_register.text.toString(), profileImageUrl,graduationUserdetails.text.toString(),domain,bioUserDetails.text.toString())
+            User(uid,email_edittext_register.text.toString(), name_edittext_register.text.toString(), profileImageUrl,graduationUserdetails,domain,bioUserDetails.text.toString())
         }
 
         ref.setValue(user)

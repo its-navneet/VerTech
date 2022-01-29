@@ -50,7 +50,7 @@ class LatestMessagesActivity : AppCompatActivity() {
         }
         val userUid = FirebaseAuth.getInstance().uid
         database = FirebaseDatabase.getInstance().getReference("users")
-        database.child(userUid!!)?.get().addOnSuccessListener {
+        database.child(userUid!!).get().addOnSuccessListener {
             if (it.exists()) {
                 val requestOptions = RequestOptions()
                 val picUrl = it.child("profileImageUrl").value
@@ -59,10 +59,10 @@ class LatestMessagesActivity : AppCompatActivity() {
                     .apply(requestOptions)
                     .into(myProfile_latest_messages)
             } else {
-                Toast.makeText(this, "Failed", 500)
+                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener() {
-            Log.d(LatestMessagesActivity.TAG, "failed")
+            Log.d(TAG, "failed")
         }
 
         recyclerview_latest_messages.adapter = adapter
@@ -138,7 +138,6 @@ class LatestMessagesActivity : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.d(TAG, "database error: " + databaseError.message)
             }
-
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Log.d(TAG, "has children: " + dataSnapshot.hasChildren())
                 if (!dataSnapshot.hasChildren()) {
@@ -148,31 +147,27 @@ class LatestMessagesActivity : AppCompatActivity() {
 
         })
 
-
         ref.orderByChild("timestamp").addChildEventListener(object : ChildEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
             }
-
             override fun onChildMoved(dataSnapshot: DataSnapshot, previousChildName: String?) {
             }
-
             override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 dataSnapshot.getValue(ChatMessage::class.java)?.let {
                     latestMessagesMap[dataSnapshot.key!!] = it
                     refreshRecyclerViewMessages()
                 }
+                recyclerview_latest_messages.scrollToPosition(0)
             }
-
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 dataSnapshot.getValue(ChatMessage::class.java)?.let {
                     latestMessagesMap[dataSnapshot.key!!] = it
                     refreshRecyclerViewMessages()
                 }
+                recyclerview_latest_messages.scrollToPosition(0)
             }
-
             override fun onChildRemoved(p0: DataSnapshot) {
             }
-
         })
     }
 
@@ -182,11 +177,9 @@ class LatestMessagesActivity : AppCompatActivity() {
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(databaseError: DatabaseError) {
             }
-
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 currentUser = dataSnapshot.getValue(User::class.java)
             }
-
         })
     }
 

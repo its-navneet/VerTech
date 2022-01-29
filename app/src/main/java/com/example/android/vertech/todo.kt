@@ -49,6 +49,7 @@ class todo : AppCompatActivity(),RecyclerViewAdapter.RowClickListener {
             }
             projectName.setText("")
             projectDescription.setText("")
+            projectMembers.setText("")
         }
     }
 

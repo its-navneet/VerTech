@@ -120,7 +120,7 @@
             android:layout_height="55dp"
             android:layout_gravity="end"
             android:text="Add"
-
+            android:textColor="@color/white"
             android:backgroundTint="@color/maintheme"/>
 
     </LinearLayout>
@@ -131,6 +131,4 @@
         android:background="@drawable/round_corners"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-
 </LinearLayout>
