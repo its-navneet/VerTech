@@ -8,14 +8,9 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.android.vertech.models.User
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_my_profile.*
 import kotlinx.android.synthetic.main.activity_my_profile.back
 import kotlinx.android.synthetic.main.activity_my_profile.biotext
@@ -64,17 +59,12 @@ class My_Profile : AppCompatActivity() {
             Log.d(RegisterActivity.TAG, "failed")
         }
 
-        profile_username.setOnClickListener(){
-            startActivity(Intent(this@My_Profile,Details::class.java))
-            finish()
-        }
-
         edit_profile.setOnClickListener(){
             startActivity(Intent(this@My_Profile,EditProfile::class.java))
         }
 
         back.setOnClickListener(){
-            startActivity(Intent(this@My_Profile,Home::class.java))
+            startActivity(Intent(this@My_Profile,Home_Fragment::class.java))
             finish()
         }
 

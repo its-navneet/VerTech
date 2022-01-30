@@ -16,11 +16,11 @@ class GettingStarted : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_getting_started)
         getstartedcircle.setOnClickListener(){
-            startActivity(Intent(this@GettingStarted,Home::class.java))
+            startActivity(Intent(this@GettingStarted,MainActivity::class.java))
             finish()
         }
         getstartedTextview.setOnClickListener(){
-            startActivity(Intent(this@GettingStarted,Home::class.java))
+            startActivity(Intent(this@GettingStarted,MainActivity::class.java))
             finish()
         }
     }

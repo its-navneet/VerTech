@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_details.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_edit_profile.xml" value="0.2" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_home.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_latest_messages.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_main.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_new_message.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_search.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/feed_content.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/fragment_chats_.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/fragment_home_.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/fragment_search_.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/user_row_new_message.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/border.xml" value="0.121875" />
         <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/circular_shape.xml" value="0.23493360572012256" />
         <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/ic_add_a_photo_24dp.xml" value="0.23493360572012256" />

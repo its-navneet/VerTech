@@ -2,13 +2,13 @@ package com.example.android.vertech.messages
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.android.vertech.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.vertech.Chats_Fragment
 import com.example.android.vertech.models.ChatMessage
 import com.example.android.vertech.models.User
 import com.example.android.vertech.utils.DateUtils.getFormattedTimeChatLog
@@ -20,11 +20,6 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_chat_log.*
 import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.chat_to_row.view.*
-import android.R.color
-
-import android.view.WindowManager
-
-
 
 
 class ChatLogActivity : AppCompatActivity() {
@@ -90,7 +85,7 @@ class ChatLogActivity : AppCompatActivity() {
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 dataSnapshot.getValue(ChatMessage::class.java)?.let {
                     if (it.fromId == FirebaseAuth.getInstance().uid) {
-                        val currentUser = LatestMessagesActivity.currentUser ?: return
+                        val currentUser = Chats_Fragment.currentUser ?: return
                         adapter.add(ChatFromItem(it.text, currentUser, it.timestamp))
                     } else {
                         adapter.add(ChatToItem(it.text, toUser!!, it.timestamp))

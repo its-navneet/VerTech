@@ -1,17 +1,16 @@
 package com.example.android.vertech.views
 
-import android.content.Context
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.vertech.Home_Fragment
 import com.example.android.vertech.R
 import com.example.android.vertech.models.Feeds
 import com.example.android.vertech.utils.DateUtils
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.feed_content.view.*
-import kotlinx.android.synthetic.main.latest_message_row.view.*
 
-class FeedsItem (val feeds: Feeds, val context: Context) : Item<ViewHolder>() {
+class FeedsItem(val feeds: Feeds, val context: Home_Fragment) : Item<ViewHolder>() {
 
 
     override fun bind(viewHolder: ViewHolder, position: Int) {

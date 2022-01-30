@@ -77,7 +77,7 @@ class UserProfile : AppCompatActivity() {
         }
 
         back.setOnClickListener(){
-            startActivity(Intent(this@UserProfile,Search::class.java))
+            startActivity(Intent(this@UserProfile,Search_Fragment::class.java))
             finish()
         }
 

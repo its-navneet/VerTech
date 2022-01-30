@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".messages.LatestMessagesActivity">
+
+    tools:context=".Home_Fragment">
 
     <FrameLayout
         android:id="@+id/topbar"
@@ -35,8 +36,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="12dp"
             app:cardCornerRadius="75dp"
-            android:background="@drawable/circular_shape"
-            >
+            android:background="@drawable/circular_shape">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/myProfile_home"
                 android:layout_width="36dp"
@@ -45,21 +45,16 @@
                 android:layout_marginLeft="2dp"
                 android:elevation="50dp" />
         </androidx.cardview.widget.CardView>
-
-
-
     </FrameLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh_feeds"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottom_nav_bar"
         android:layout_below="@id/topbar"
         android:layout_marginHorizontal="4dp"
         android:layout_marginVertical="4dp"
         android:background="@drawable/round_corners">
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_feeds"
@@ -67,7 +62,6 @@
             android:layout_height="match_parent"
             android:background="@drawable/round_corners"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
@@ -75,34 +69,23 @@
         android:id="@+id/new_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_nav_bar"
-        android:layout_marginLeft="60dp"
-        android:layout_marginBottom="10dp"
-        app:tint="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/ic_post_add_24dp"
         app:backgroundTint="@color/maintheme"
-        android:src="@drawable/ic_post_add_24dp" />
+        app:tint="@color/white" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/todo_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_nav_bar"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="60dp"
-        android:layout_marginBottom="10dp"
-        app:tint="@color/white"
-        android:src="@drawable/ic_baseline_add_task_24"
-        app:backgroundTint="@color/maintheme" />
-
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
-        android:id="@+id/bottom_nav_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:elevation="8dp"
-        app:cnb_iconSize="30dp"
-        android:background="@color/white"
-        app:cnb_menuResource="@menu/bottom_nav_menu"
-        app:cnb_orientationMode="horizontal"
-        app:cnb_unselectedColor="@android:color/black" />
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/ic_baseline_add_task_24"
+        app:backgroundTint="@color/maintheme"
+        app:tint="@color/white"/>
+
 </RelativeLayout>

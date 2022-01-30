@@ -7,16 +7,19 @@
     tools:context=".MainActivity"
     android:id="@+id/fragment_container">
 
-
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_bar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_nav_bar"
-        app:cnb_menuResource="@menu/bottom_nav_menu"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/round_corners"
-        app:cnb_unselectedColor="@android:color/black"
-        app:cnb_iconSize="30dp"
-        app:cnb_orientationMode="horizontal"
-        android:elevation="8dp"/>
+        app:menu="@menu/bottom_nav_menu"/>
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav_bar_main"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
 </RelativeLayout>

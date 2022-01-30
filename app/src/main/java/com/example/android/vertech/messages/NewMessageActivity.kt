@@ -93,8 +93,6 @@ class UserItem(val user: User, val context: Context) : Item<ViewHolder>() {
         viewHolder.itemView.graduation_year.text=user.graduation
         if (!user.profileImageUrl!!.isEmpty()) {
             val requestOptions = RequestOptions().placeholder(R.drawable.no_image2)
-
-
             Glide.with(viewHolder.itemView.imageview_new_message.context)
                     .load(user.profileImageUrl)
                     .apply(requestOptions)
@@ -110,5 +108,4 @@ class UserItem(val user: User, val context: Context) : Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.user_row_new_message
     }
-
 }

@@ -20,9 +20,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_latest_messages.*
 import kotlinx.android.synthetic.main.activity_new_post.*
-import kotlinx.android.synthetic.main.feed_content.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -127,7 +125,7 @@ class new_post : AppCompatActivity() {
                     .addOnSuccessListener {
                         Log.d(TAG, "Finally we saved the user to Firebase Database")
                         Toast.makeText(this,"Post uploaded successfully",LENGTH_SHORT).show()
-                        val intent = Intent(this, Home::class.java)
+                        val intent = Intent(this, Home_Fragment::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
                     }

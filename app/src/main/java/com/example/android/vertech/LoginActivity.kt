@@ -7,15 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
-import com.example.android.vertech.messages.LatestMessagesActivity
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.android.vertech.RegisterActivity.Companion.TAG
-import com.example.android.vertech.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_my_profile.*
 import kotlinx.android.synthetic.main.activity_register.*
@@ -73,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                     if (!it.isSuccessful) return@addOnCompleteListener
                     Log.d(TAG, "Successfully logged in: ${it.result!!.user?.uid}")
 
-                    val intent = Intent(this, Home::class.java)
+                    val intent = Intent(this, Home_Fragment::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(R.anim.enter, R.anim.exit)
