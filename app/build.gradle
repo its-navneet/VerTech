@@ -95,4 +95,5 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version_ktx"
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
 
+
 }

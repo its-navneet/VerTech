@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
     var graduationUserdetails:String = ""
 
     companion object {
-        val TAG = RegisterActivity::class.java.simpleName!!
+        val TAG = RegisterActivity::class.java.simpleName
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,10 +117,7 @@ class RegisterActivity : AppCompatActivity() {
             val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
             contentResolver.query(selectedPhotoUri!!, filePathColumn, null, null, null)?.use {
                 it.moveToFirst()
-                val columnIndex = it.getColumnIndex(filePathColumn[0])
-                val picturePath = it.getString(columnIndex)
-                // If picture chosen from camera rotate by 270 degrees else
-                    Picasso.get().load(selectedPhotoUri).into(selectphoto_imageview_register)
+                Picasso.get().load(selectedPhotoUri).into(selectphoto_imageview_register)
             }
         }
     }
@@ -166,7 +163,7 @@ class RegisterActivity : AppCompatActivity() {
         // compressing image
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
         val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 25, byteArrayOutputStream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 20, byteArrayOutputStream)
         val reducedImage: ByteArray = byteArrayOutputStream.toByteArray()
 
         if (selectedPhotoUri == null) {

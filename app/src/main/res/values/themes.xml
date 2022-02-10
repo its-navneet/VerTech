@@ -3,7 +3,7 @@
     <style name="Theme.Vertech" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#FF6930B3</item>
-        <item name="colorPrimaryVariant">#380081</item>
+        <item name="colorPrimaryVariant">#2F0463</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

@@ -21,6 +21,7 @@ import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
+import kotlinx.android.synthetic.main.feed_content.view.*
 import kotlinx.android.synthetic.main.fragment_search_.view.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
@@ -149,7 +150,6 @@ class Search_Fragment : Fragment() {
                 view!!.recyclerview_search.adapter = adapter
                 view!!.swiperefresh_search.isRefreshing = false
             }
-
         })
     }
 

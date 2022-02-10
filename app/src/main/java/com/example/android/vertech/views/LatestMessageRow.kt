@@ -1,9 +1,9 @@
 package com.example.android.vertech.views
 
 import android.app.Activity
-import android.content.Context
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.vertech.Chats_Fragment
 import com.example.android.vertech.R
 import com.example.android.vertech.models.ChatMessage
 import com.example.android.vertech.models.User
@@ -18,7 +18,7 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.latest_message_row.view.*
 
 
-class LatestMessageRow(val chatMessage: ChatMessage, val context: Context) : Item<ViewHolder>() {
+class LatestMessageRow(val chatMessage: ChatMessage, val context: Chats_Fragment) : Item<ViewHolder>() {
 
     var chatPartnerUser: User? = null
 

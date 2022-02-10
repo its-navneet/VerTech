@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="80dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/ic_post_add_24dp"
         app:backgroundTint="@color/maintheme"
         app:tint="@color/white" />
@@ -83,9 +83,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="80dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/ic_baseline_add_task_24"
         app:backgroundTint="@color/maintheme"
-        app:tint="@color/white"/>
+        app:tint="@color/white" />
 
 </RelativeLayout>

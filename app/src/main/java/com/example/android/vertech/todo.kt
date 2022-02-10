@@ -1,5 +1,6 @@
 package com.example.android.vertech
 
+import android.content.Intent
 import android.graphics.drawable.ClipDrawable.VERTICAL
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -64,4 +65,12 @@ class todo : AppCompatActivity(),RecyclerViewAdapter.RowClickListener {
         projectName.setTag(projectName.id, user.id)
         addButton.text = "Update"
     }
+
+    override fun onShareClickListener(user: UserEntity) {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, user.name + "\n" + user.email+ "\n" + user.phone)
+        startActivity(intent)
+    }
+
 }

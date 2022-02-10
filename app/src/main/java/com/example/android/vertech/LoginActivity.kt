@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                     if (!it.isSuccessful) return@addOnCompleteListener
                     Log.d(TAG, "Successfully logged in: ${it.result!!.user?.uid}")
 
-                    val intent = Intent(this, Home_Fragment::class.java)
+                    val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     overridePendingTransition(R.anim.enter, R.anim.exit)

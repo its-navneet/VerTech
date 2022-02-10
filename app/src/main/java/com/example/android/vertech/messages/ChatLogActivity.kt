@@ -81,7 +81,6 @@ class ChatLogActivity : AppCompatActivity() {
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
             }
-
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 dataSnapshot.getValue(ChatMessage::class.java)?.let {
                     if (it.fromId == FirebaseAuth.getInstance().uid) {

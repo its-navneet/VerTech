@@ -1,5 +1,6 @@
 package com.example.android.vertech
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -20,10 +21,17 @@ import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.fragment_chats_.view.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.android.vertech.models.Feeds
+import com.example.android.vertech.utils.DateUtils
+import kotlinx.android.synthetic.main.feed_content.view.*
+import kotlinx.android.synthetic.main.fragment_chats_.*
+
 
 class Chats_Fragment : Fragment() {
     private val adapter = GroupAdapter<ViewHolder>()
-    private val latestMessagesMap = HashMap<String, ChatMessage>()
+    private val latestMessagesMap = LinkedHashMap<String, ChatMessage>()
 
     companion object {
         var currentUser: User? = null
@@ -67,7 +75,6 @@ class Chats_Fragment : Fragment() {
 
         fetchCurrentUser()
         listenForLatestMessages()
-
         adapter.setOnItemClickListener { item, _ ->
             val intent = Intent(activity, ChatLogActivity::class.java)
             val row = item as LatestMessageRow
@@ -88,7 +95,7 @@ class Chats_Fragment : Fragment() {
     private fun refreshRecyclerViewMessages() {
         adapter.clear()
         latestMessagesMap.values.forEach {
-            adapter.add(LatestMessageRow(it, requireContext()))
+            adapter.add(LatestMessageRow(it, this@Chats_Fragment))
         }
         view?.swiperefresh_message?.isRefreshing = false
     }
@@ -104,7 +111,7 @@ class Chats_Fragment : Fragment() {
             }
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                Log.d(Chats_Fragment.TAG, "has children: " + dataSnapshot.hasChildren())
+                Log.d("TAG", "has children: " + dataSnapshot.hasChildren())
                 if (!dataSnapshot.hasChildren()) {
                     view?.swiperefresh_message?.isRefreshing = false
                 }

@@ -12,7 +12,7 @@
     <item
         android:id="@+id/home"
         android:enabled="true"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/logo"
         android:title="Home"
         app:cnb_iconColor="#DA6930B3"
         app:cnb_textColor="#DA6930B3"

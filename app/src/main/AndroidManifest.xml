@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.vertech">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,13 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vertech">
         <activity
+            android:name=".Likes_List"
+            android:exported="false" />
+        <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
             android:name=".UserProfile"
-            android:exported="false" />
-        <activity
-            android:name=".Details"
             android:exported="false" />
         <activity
             android:name=".todo"
@@ -27,23 +28,15 @@
         <activity
             android:name=".GettingStarted"
             android:exported="false" />
-        <activity
-            android:name=".Search"
-            android:exported="false" />
-        <activity
-            android:name=".Home"
-            android:exported="false" />
-        <activity
-            android:name=".messages.LatestMessagesActivity"
-            android:exported="true" />
+
         <activity
             android:name=".RegisterActivity"
-            android:configChanges="orientation|keyboard|screenSize" />
-        <activity android:name=".LoginActivity" />
+            android:configChanges="orientation|keyboard|screenSize"
+            android:exported="true"/>
+        <activity android:name=".LoginActivity"
+            android:exported="true"/>
         <activity android:name=".messages.NewMessageActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".messages.LatestMessagesActivity" />
+
         </activity>
         <activity
             android:name=".splash"
@@ -58,9 +51,7 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity android:name=".messages.ChatLogActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".messages.LatestMessagesActivity" />
+
         </activity>
         <activity android:name=".new_post" />
         <activity android:name=".My_Profile" />

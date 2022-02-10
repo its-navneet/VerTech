@@ -42,6 +42,7 @@
                     android:id="@+id/selectphoto_imageview_register"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:scaleType="centerCrop"
                     android:layout_centerInParent="true"
                     android:src="@drawable/profile_dummy"
                     />
@@ -185,12 +186,13 @@
                         android:textColor="#191919"
                         android:textColorHint="@color/hint_color"
                         />
+
                     <Spinner
                         android:id="@+id/domain_spinner"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:autofillHints="Your Domain"
-                        />
+                        android:popupBackground="@color/white"
+                        android:autofillHints="Your Domain" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -215,6 +217,7 @@
                         android:autofillHints="Your Graduation Year"
                         android:layout_gravity="end"
                         android:paddingLeft="7dp"
+                        android:popupBackground="@color/white"
                         />
                 </LinearLayout>
 

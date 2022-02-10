@@ -34,7 +34,6 @@ class new_post : AppCompatActivity() {
 
         upload_btn.setOnClickListener {
             sendNewFeed()
-
         }
         add_post_photo.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK)
@@ -52,10 +51,7 @@ class new_post : AppCompatActivity() {
             val filePathColumn = arrayOf(MediaStore.Images.Media.DATA)
             contentResolver.query(selectedPhotoUri!!, filePathColumn, null, null, null)?.use {
                 it.moveToFirst()
-                val columnIndex = it.getColumnIndex(filePathColumn[0])
-                val picturePath = it.getString(columnIndex)
-                // If picture chosen from camera rotate by 270 degrees else
-                    Picasso.get().load(selectedPhotoUri).into(selectphoto_imageview_feed)
+                Picasso.get().load(selectedPhotoUri).into(selectphoto_imageview_feed)
             }
         }
     }
@@ -66,11 +62,13 @@ class new_post : AppCompatActivity() {
 
         if (text_content.isEmpty()) {
             Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
+            loading_view_post.visibility = View.GONE
             return
         }
 
         if (selectedPhotoUri == null) {
             Toast.makeText(this, "Please select a photo", Toast.LENGTH_SHORT).show()
+            loading_view_post.visibility = View.GONE
             return
         }
         uploadImageToFirebaseStorage()
@@ -81,7 +79,7 @@ class new_post : AppCompatActivity() {
         // compressing image
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
         val byteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 60, byteArrayOutputStream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream)
         val reducedImage: ByteArray = byteArrayOutputStream.toByteArray()
 
         if (selectedPhotoUri == null) {
@@ -107,22 +105,15 @@ class new_post : AppCompatActivity() {
         }
 
     }
-
     private fun saveUserToFirebaseDatabase(feedsImageUrl: String?) {
         val uid = FirebaseAuth.getInstance().uid ?: return
         val ref = FirebaseDatabase.getInstance().getReference("/feeds/$uid")
-        var database : DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
+        val database : DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
         database.child(uid).get().addOnSuccessListener {
             if(it.exists()){
                 val name=it.child("name").value
-                val feed = if (feedsImageUrl == null) {
-                    Feeds(uid,name.toString(),null, feed_text_content.text.toString(),System.currentTimeMillis() / 1000)
-                } else {
-                    Feeds(uid,name.toString(), feedsImageUrl,feed_text_content.text.toString(),System.currentTimeMillis() / 1000)
-                }
-
-                ref.setValue(feed)
-                    .addOnSuccessListener {
+                val feed = Feeds(uid,name.toString(), feedsImageUrl,feed_text_content.text.toString(),System.currentTimeMillis() / 1000)
+                ref.setValue(feed).addOnSuccessListener {
                         Log.d(TAG, "Finally we saved the user to Firebase Database")
                         Toast.makeText(this,"Post uploaded successfully",LENGTH_SHORT).show()
                         val intent = Intent(this, Home_Fragment::class.java)
@@ -133,7 +124,6 @@ class new_post : AppCompatActivity() {
                         Log.d(TAG, "Failed to set value to database: ${it.message}")
                         loading_view_post.visibility = View.GONE
                     }
-
             }
             else{
                 Toast.makeText(this,"Failed",LENGTH_SHORT).show()

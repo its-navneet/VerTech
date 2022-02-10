@@ -27,13 +27,12 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:layout_marginBottom="3dp"
-                android:textColor="#1F1F1F"
+                android:textColor="#393939"
                 />
-
             <TextView android:id="@+id/tvPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="17dp"
                 android:textColor="#303030"
                 />
         </LinearLayout>
@@ -41,14 +40,26 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_weight="1">
             <ImageView
                 android:id="@+id/deleteUserID"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_weight="1"
                 android:layout_marginRight="16dp"
                 android:src="@drawable/ic_baseline_delete_24"
                 android:layout_gravity="center_vertical"
                 app:tint="@color/black" />
+            <ImageView
+                android:id="@+id/shareDetails"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/ic_baseline_share_24"
+                android:layout_gravity="center_vertical"
+                app:tint="@color/black" />
+
         </LinearLayout>
 </LinearLayout>
