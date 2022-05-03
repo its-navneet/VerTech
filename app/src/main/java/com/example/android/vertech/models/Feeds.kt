@@ -8,5 +8,5 @@ class Feeds(
     val textcontent: String?,
     val timestamp: Long?,
 ) {
-    constructor() : this("","","", "",  -1)
+    constructor() : this("", "", "", "", -1)
 }

@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".views.MainActivity"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@drawable/view">
 
         <TextView
@@ -24,7 +24,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -38,14 +39,14 @@
                 app:cardCornerRadius="300dp"
                 android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/black">
+
                 <pl.droidsonroids.gif.GifImageView
                     android:id="@+id/selectphoto_imageview_update"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
                     android:layout_centerInParent="true"
-                    android:src="@drawable/profile_dummy"
-                    />
+                    android:src="@drawable/profile_dummy" />
             </androidx.cardview.widget.CardView>
 
             <Button
@@ -56,7 +57,7 @@
                 android:layout_gravity="center"
                 android:text="@string/add_photo"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/maintheme"/>
+                android:backgroundTint="@color/maintheme" />
 
 
             <LinearLayout
@@ -73,7 +74,7 @@
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/username"
                     android:layout_marginRight="20dp"
-                    android:layout_margin="8dp"/>
+                    android:layout_margin="8dp" />
 
                 <EditText
                     android:id="@+id/name_editProfile"
@@ -90,28 +91,28 @@
 
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:layout_marginBottom="10dp">
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_weight="1"
-                    android:gravity="start"
-                    android:orientation="vertical"
-                    android:background="@drawable/border"
-                    android:layout_marginBottom="10dp">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18dp"
-                        android:hint="Your Domain"
-                        android:padding="6dp"
-                        android:textColor="#191919"
-                        android:textColorHint="@color/hint_color"
-                        />
-                    <Spinner
-                        android:id="@+id/domain_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autofillHints="Your Domain"
-                        />
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:hint="Your Domain"
+                    android:padding="6dp"
+                    android:textColor="#191919"
+                    android:textColorHint="@color/hint_color" />
+
+                <Spinner
+                    android:id="@+id/domain_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:autofillHints="Your Domain" />
             </LinearLayout>
 
             <LinearLayout

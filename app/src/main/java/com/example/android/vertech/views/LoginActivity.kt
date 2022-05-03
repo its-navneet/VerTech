@@ -1,17 +1,15 @@
-package com.example.android.vertech
+package com.example.android.vertech.views
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.android.vertech.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_my_profile.*
-import kotlinx.android.synthetic.main.activity_register.*
 
 class LoginActivity : AppCompatActivity() {
     private var mAuth: FirebaseAuth? = null
@@ -23,9 +21,6 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-        supportActionBar?.setCustomView(R.layout.abs_layout)
-        supportActionBar!!.elevation = 0.0f
         mAuth = FirebaseAuth.getInstance()
 
 
@@ -33,12 +28,12 @@ class LoginActivity : AppCompatActivity() {
             performLogin()
         }
 
-        resetpassword.setOnClickListener() {
-            startActivity(Intent(this,ForgotPassword::class.java))
+        resetpassword.setOnClickListener {
+            startActivity(Intent(this, ForgotPassword::class.java))
         }
 
         back_to_register_textview.setOnClickListener {
-            startActivity(Intent(this@LoginActivity,RegisterActivity::class.java))
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             finish()
         }
@@ -62,20 +57,20 @@ class LoginActivity : AppCompatActivity() {
         loading_view_login.visibility = View.VISIBLE
 
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener {
-                    if (!it.isSuccessful) return@addOnCompleteListener
-                    Log.d(TAG, "Successfully logged in: ${it.result!!.user?.uid}")
+            .addOnCompleteListener {
+                if (!it.isSuccessful) return@addOnCompleteListener
+                Log.d(TAG, "Successfully logged in: ${it.result!!.user?.uid}")
 
-                    val intent = Intent(this, MainActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    overridePendingTransition(R.anim.enter, R.anim.exit)
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                overridePendingTransition(R.anim.enter, R.anim.exit)
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "${it.message}", Toast.LENGTH_SHORT).show()
 
-                    back_to_register_textview.visibility = View.VISIBLE
-                    loading_view_login.visibility = View.GONE
-                }
+                back_to_register_textview.visibility = View.VISIBLE
+                loading_view_login.visibility = View.GONE
+            }
     }
 }

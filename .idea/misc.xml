@@ -3,30 +3,63 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Vertech/app/src/main/res/drawable-v24/border.xml" value="0.153" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable-v24/border2.xml" value="0.148" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable-v24/circular_shape.xml" value="0.1595" />
         <entry key="..\:/Vertech/app/src/main/res/drawable-v24/ic_add_a_photo_24dp.xml" value="0.23958333333333334" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable-v24/rounded_select_photo_button.xml" value="0.148" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/border1.xml" value="0.148" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/ic_post_add_24dp.xml" value="0.139" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/like_off.xml" value="0.139" />
         <entry key="..\:/Vertech/app/src/main/res/drawable/like_on.xml" value="0.23958333333333334" />
         <entry key="..\:/Vertech/app/src/main/res/drawable/like_solid.xml" value="0.23958333333333334" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/round_corners2.xml" value="0.222" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/round_corners3.xml" value="0.104" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/shape_bg_incoming_bubble.xml" value="0.148" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/shape_bg_outgoing_bubble.xml" value="0.148" />
+        <entry key="..\:/Vertech/app/src/main/res/drawable/view.xml" value="0.1595" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/abs_layout.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/actionbar_layout.xml" value="0.4" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_about_us.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_chat_log.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_details.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_edit_profile.xml" value="0.2" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_forgot_password.xml" value="0.21501532175689478" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_getting_started.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_home.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_latest_messages.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_likes_list.xml" value="0.1" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_login.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_main.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_my_profile.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_new_message.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_new_post.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_register.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/activity_search.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_splash.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_todo.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/activity_user_profile.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/chat_from_row.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/chat_to_row.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/feed_content.xml" value="0.264" />
         <entry key="..\:/Vertech/app/src/main/res/layout/fragment_chats_.xml" value="0.11206896551724138" />
-        <entry key="..\:/Vertech/app/src/main/res/layout/fragment_home_.xml" value="0.1" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/fragment_home_.xml" value="0.264" />
         <entry key="..\:/Vertech/app/src/main/res/layout/fragment_search_.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/image_dialog_layout.xml" value="0.1" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/latest_message_row.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/likes_row.xml" value="0.2" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/notification.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/recyclerview_row.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/rounded_button.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/rounded_edittext_register_login.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/rounded_select_photo_button.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/shape_bg_incoming_bubble.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/shape_bg_outgoing_bubble.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/layout/user_row_new_message.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/layout/users_search_layout.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="..\:/Vertech/app/src/main/res/menu/search_items.xml" value="0.21927083333333333" />
+        <entry key="..\:/Vertech/app/src/main/res/menu/toolbar_menu.xml" value="0.21927083333333333" />
         <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/border.xml" value="0.121875" />
         <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/circular_shape.xml" value="0.23493360572012256" />
         <entry key="..\:/Vertech2/Vertech/app/src/main/res/drawable-v24/ic_add_a_photo_24dp.xml" value="0.23493360572012256" />

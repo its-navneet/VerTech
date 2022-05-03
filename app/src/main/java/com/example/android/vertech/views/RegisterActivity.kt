@@ -1,4 +1,4 @@
-package com.example.android.vertech
+package com.example.android.vertech.views
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,29 +7,32 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.android.vertech.R
 import com.example.android.vertech.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_register.*
-import java.util.*
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import java.io.ByteArrayOutputStream
+import java.util.*
 
 
 class RegisterActivity : AppCompatActivity() {
 
     private var selectedPhotoUri: Uri? = null
-    var domain: String =""
-    var graduationUserdetails:String = ""
+    var domain: String = ""
+    var graduationUserdetails: String = ""
 
     companion object {
         val TAG = RegisterActivity::class.java.simpleName
@@ -42,7 +45,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
         // access the items of the list
-        val domains= resources.getStringArray(R.array.domains_res)
+        val domains = resources.getStringArray(R.array.domains_res)
         val graduation = resources.getStringArray(R.array.gyear_res)
 
         // access the domain spinner
@@ -60,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
                     parent: AdapterView<*>,
                     view: View, position: Int, id: Long
                 ) {
-                    domain= domains[position].toString()
+                    domain = domains[position].toString()
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
@@ -85,11 +88,14 @@ class RegisterActivity : AppCompatActivity() {
                     ) {
                         graduationUserdetails = graduation[position].toString()
                     }
+
                     override fun onNothingSelected(parent: AdapterView<*>) {
                         // write code to perform some action
                     }
                 }
             }
+
+
         }
 
         register_button_register.setOnClickListener {
@@ -126,8 +132,8 @@ class RegisterActivity : AppCompatActivity() {
         val email = email_edittext_register.text.toString()
         val password = password_edittext_register.text.toString()
         val name = name_edittext_register.text.toString()
-        val graduation=graduationUserdetails
-        val bio=bioUserDetails.text.toString()
+        val graduation = graduationUserdetails
+        val bio = bioUserDetails.text.toString()
 
         if (email.isEmpty() || password.isEmpty() || name.isEmpty() || graduation.isEmpty() || bio.isEmpty() || domain.isEmpty()) {
             Toast.makeText(this, "Please fill all the fields", Toast.LENGTH_SHORT).show()
@@ -144,19 +150,18 @@ class RegisterActivity : AppCompatActivity() {
 
         // Firebase Authentication to create a user with email and password
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener {
-                    if (!it.isSuccessful) return@addOnCompleteListener
-
-                    // else if successful
-                    Log.d(TAG, "Successfully created user with uid: ${it.result!!.user?.uid}")
-                    uploadImageToFirebaseStorage()
-                }
-                .addOnFailureListener {
-                    Log.d(TAG, "Failed to create user: ${it.message}")
-                    loading_view_register.visibility = View.GONE
-                    already_have_account_text_view.visibility = View.VISIBLE
-                    Toast.makeText(this, "${it.message}", Toast.LENGTH_LONG).show()
-                }
+            .addOnCompleteListener {
+                if (!it.isSuccessful) return@addOnCompleteListener
+                // else if successful
+                Log.d(TAG, "Successfully created user with uid: ${it.result!!.user?.uid}")
+                uploadImageToFirebaseStorage()
+            }
+            .addOnFailureListener {
+                Log.d(TAG, "Failed to create user: ${it.message}")
+                loading_view_register.visibility = View.GONE
+                already_have_account_text_view.visibility = View.VISIBLE
+                Toast.makeText(this, "${it.message}", Toast.LENGTH_LONG).show()
+            }
     }
 
     private fun uploadImageToFirebaseStorage() {
@@ -173,20 +178,20 @@ class RegisterActivity : AppCompatActivity() {
             val filename = UUID.randomUUID().toString()
             val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
             ref.putBytes(reducedImage)
-                    .addOnSuccessListener {
-                        Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
+                .addOnSuccessListener {
+                    Log.d(TAG, "Successfully uploaded image: ${it.metadata?.path}")
 
-                        @Suppress("NestedLambdaShadowedImplicitParameter")
-                        ref.downloadUrl.addOnSuccessListener {
-                            Log.d(TAG, "File Location: $it")
-                            saveUserToFirebaseDatabase(it.toString())
-                        }
+                    @Suppress("NestedLambdaShadowedImplicitParameter")
+                    ref.downloadUrl.addOnSuccessListener {
+                        Log.d(TAG, "File Location: $it")
+                        saveUserToFirebaseDatabase(it.toString())
                     }
-                    .addOnFailureListener {
-                        Log.d(TAG, "Failed to upload image to storage: ${it.message}")
-                        loading_view_register.visibility = View.GONE
-                        already_have_account_text_view.visibility = View.VISIBLE
-                    }
+                }
+                .addOnFailureListener {
+                    Log.d(TAG, "Failed to upload image to storage: ${it.message}")
+                    loading_view_register.visibility = View.GONE
+                    already_have_account_text_view.visibility = View.VISIBLE
+                }
         }
 
     }
@@ -196,9 +201,25 @@ class RegisterActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
         val user = if (profileImageUrl == null) {
-            User(uid, email_edittext_register.text.toString(), name_edittext_register.text.toString(), null,graduationUserdetails,domain,bioUserDetails.text.toString())
+            User(
+                uid,
+                email_edittext_register.text.toString(),
+                name_edittext_register.text.toString(),
+                null,
+                graduationUserdetails,
+                domain,
+                bioUserDetails.text.toString()
+            )
         } else {
-            User(uid,email_edittext_register.text.toString(), name_edittext_register.text.toString(), profileImageUrl,graduationUserdetails,domain,bioUserDetails.text.toString())
+            User(
+                uid,
+                email_edittext_register.text.toString(),
+                name_edittext_register.text.toString(),
+                profileImageUrl,
+                graduationUserdetails,
+                domain,
+                bioUserDetails.text.toString()
+            )
         }
 
         ref.setValue(user)
@@ -221,10 +242,10 @@ class RegisterActivity : AppCompatActivity() {
         super.onStart()
         val currentUser: FirebaseUser? = Firebase.auth.currentUser
         if (currentUser != null) {
-            startActivity(Intent(this@RegisterActivity,GettingStarted::class.java))
+            startActivity(Intent(this@RegisterActivity, GettingStarted::class.java))
             finish()
         } else {
-            Toast.makeText(this,"Not logged In",500)
+            Toast.makeText(this, "Not logged In", 500)
         }
     }
 }

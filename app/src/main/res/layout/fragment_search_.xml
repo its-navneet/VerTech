@@ -5,48 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Search_Fragment">
-
-    <FrameLayout
-        android:id="@+id/topbar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/view">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Search"
-                android:textSize="22dp"
-                android:textColor="@color/white"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_vertical"
-                />
-        </LinearLayout>
-        <androidx.cardview.widget.CardView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="right"
-            android:elevation="50dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="12dp"
-            app:cardCornerRadius="75dp"
-            android:background="@drawable/circular_shape"
-            >
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/myProfile_search"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginLeft="2dp"
-                android:elevation="50dp"
-                android:background="@drawable/no_image2"/>
-        </androidx.cardview.widget.CardView>
-    </FrameLayout>
+    tools:context=".views.fragments.Search_Fragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/searchbox"
@@ -54,17 +13,15 @@
         android:layout_height="45dp"
         android:layout_marginHorizontal="20dp"
         app:cardCornerRadius="25dp"
-        android:layout_below="@id/topbar"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="5dp">
+
         <SearchView
             android:id="@+id/searchbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:queryHint="Search your contact"
             android:iconifiedByDefault="false"
-            android:queryBackground="@color/transparent"
-            />
+            android:queryBackground="@color/transparent" />
 
     </androidx.cardview.widget.CardView>
 
@@ -83,6 +40,6 @@
             android:layout_height="match_parent"
             android:background="@drawable/round_corners"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </RelativeLayout>

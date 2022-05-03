@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.vertech">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,35 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Vertech">
         <activity
-            android:name=".Likes_List"
+            android:name=".views.AboutUs"
             android:exported="false" />
         <activity
-            android:name=".ForgotPassword"
+            android:name=".views.Likes_List"
             android:exported="false" />
         <activity
-            android:name=".UserProfile"
+            android:name=".views.ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".todo"
+            android:name=".views.UserProfile"
             android:exported="false" />
         <activity
-            android:name=".EditProfile"
+            android:name=".views.todo"
+            android:exported="false" />
+        <activity
+            android:name=".views.EditProfile"
             android:exported="true" />
         <activity
-            android:name=".GettingStarted"
+            android:name=".views.GettingStarted"
             android:exported="false" />
-
         <activity
-            android:name=".RegisterActivity"
+            android:name=".views.RegisterActivity"
             android:configChanges="orientation|keyboard|screenSize"
-            android:exported="true"/>
-        <activity android:name=".LoginActivity"
-            android:exported="true"/>
-        <activity android:name=".messages.NewMessageActivity">
-
-        </activity>
+            android:exported="true" />
         <activity
-            android:name=".splash"
+            android:name=".views.LoginActivity"
+            android:exported="true" />
+        <activity android:name=".messages.NewMessageActivity"></activity>
+        <activity
+            android:name=".views.splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,13 +50,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".views.MainActivity"
             android:exported="true" />
-        <activity android:name=".messages.ChatLogActivity">
-
-        </activity>
-        <activity android:name=".new_post" />
-        <activity android:name=".My_Profile" />
+        <activity android:name=".messages.ChatLogActivity"></activity>
+        <activity android:name=".views.new_post" />
+        <activity android:name=".views.My_Profile" />
     </application>
 
 </manifest>

@@ -1,9 +1,10 @@
-package com.example.android.vertech
+package com.example.android.vertech.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.android.vertech.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
@@ -24,9 +25,17 @@ class ForgotPassword : AppCompatActivity() {
                 mAuth!!.sendPasswordResetEmail(email)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(this@ForgotPassword, "Check email to reset your password!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@ForgotPassword,
+                                "Check email to reset your password!",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         } else {
-                            Toast.makeText(this@ForgotPassword, "Fail to send reset password email!", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@ForgotPassword,
+                                "Fail to send reset password email!",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }
             }

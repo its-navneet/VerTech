@@ -5,13 +5,13 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.android.vertech.R
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.android.vertech.Chats_Fragment
+import com.example.android.vertech.R
 import com.example.android.vertech.models.ChatMessage
 import com.example.android.vertech.models.User
 import com.example.android.vertech.utils.DateUtils.getFormattedTimeChatLog
+import com.example.android.vertech.views.fragments.Chats_Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.xwray.groupie.GroupAdapter
@@ -81,6 +81,7 @@ class ChatLogActivity : AppCompatActivity() {
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, previousChildName: String?) {
             }
+
             override fun onChildAdded(dataSnapshot: DataSnapshot, previousChildName: String?) {
                 dataSnapshot.getValue(ChatMessage::class.java)?.let {
                     if (it.fromId == FirebaseAuth.getInstance().uid) {
@@ -112,23 +113,27 @@ class ChatLogActivity : AppCompatActivity() {
         val fromId = FirebaseAuth.getInstance().uid ?: return
         val toId = toUser?.uid
 
-        val reference = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
-        val toReference = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
+        val reference =
+            FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
+        val toReference =
+            FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
 
-        val chatMessage = ChatMessage(reference.key!!, text, fromId, toId!!, System.currentTimeMillis() / 1000)
+        val chatMessage =
+            ChatMessage(reference.key!!, text, fromId, toId!!, System.currentTimeMillis() / 1000)
         reference.setValue(chatMessage)
-                .addOnSuccessListener {
-                    Log.d(TAG, "Saved our chat message: ${reference.key}")
-                    edittext_chat_log.text.clear()
-                    recyclerview_chat_log.smoothScrollToPosition(adapter.itemCount-1)
-                }
+            .addOnSuccessListener {
+                Log.d(TAG, "Saved our chat message: ${reference.key}")
+                edittext_chat_log.text.clear()
+            }
 
         toReference.setValue(chatMessage)
 
-        val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+        val latestMessageRef =
+            FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
         latestMessageRef.setValue(chatMessage)
 
-        val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
+        val latestMessageToRef =
+            FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
         latestMessageToRef.setValue(chatMessage)
 
     }
@@ -150,10 +155,10 @@ class ChatFromItem(val text: String, val user: User, val timestamp: Long) : Item
 
 
             Glide.with(targetImageView.context)
-                    .load(user.profileImageUrl)
-                    .thumbnail(0.1f)
-                    .apply(requestOptions)
-                    .into(targetImageView)
+                .load(user.profileImageUrl)
+                .thumbnail(0.1f)
+                .apply(requestOptions)
+                .into(targetImageView)
 
         }
     }
@@ -177,10 +182,10 @@ class ChatToItem(val text: String, val user: User, val timestamp: Long) : Item<V
             val requestOptions = RequestOptions().placeholder(R.drawable.no_image2)
 
             Glide.with(targetImageView.context)
-                    .load(user.profileImageUrl)
-                    .thumbnail(0.1f)
-                    .apply(requestOptions)
-                    .into(targetImageView)
+                .load(user.profileImageUrl)
+                .thumbnail(0.1f)
+                .apply(requestOptions)
+                .into(targetImageView)
         }
     }
 

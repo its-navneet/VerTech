@@ -7,21 +7,21 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.example.android.vertech.Home_Fragment"
+        android:name="com.example.android.vertech.views.fragments.Home_Fragment"
         android:label="fragment_home_"
         tools:layout="@layout/fragment_home_" >
 
     </fragment>
     <fragment
         android:id="@+id/chats"
-        android:name="com.example.android.vertech.Chats_Fragment"
+        android:name="com.example.android.vertech.views.fragments.Chats_Fragment"
         android:label="fragment_chats_"
         tools:layout="@layout/fragment_chats_" >
 
     </fragment>
     <fragment
         android:id="@+id/search"
-        android:name="com.example.android.vertech.Search_Fragment"
+        android:name="com.example.android.vertech.views.fragments.Search_Fragment"
         android:label="fragment_search_"
         tools:layout="@layout/fragment_search_" >
 

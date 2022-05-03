@@ -3,11 +3,11 @@ package com.example.android.vertech.views
 import android.app.Activity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.android.vertech.Chats_Fragment
 import com.example.android.vertech.R
 import com.example.android.vertech.models.ChatMessage
 import com.example.android.vertech.models.User
 import com.example.android.vertech.utils.DateUtils
+import com.example.android.vertech.views.fragments.Chats_Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,7 +18,8 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.latest_message_row.view.*
 
 
-class LatestMessageRow(val chatMessage: ChatMessage, val context: Chats_Fragment) : Item<ViewHolder>() {
+class LatestMessageRow(val chatMessage: ChatMessage, val context: Chats_Fragment) :
+    Item<ViewHolder>() {
 
     var chatPartnerUser: User? = null
 
@@ -45,7 +46,8 @@ class LatestMessageRow(val chatMessage: ChatMessage, val context: Chats_Fragment
             override fun onDataChange(p0: DataSnapshot) {
                 chatPartnerUser = p0.getValue(User::class.java)
                 viewHolder.itemView.username_textview_latest_message.text = chatPartnerUser?.name
-                viewHolder.itemView.latest_msg_time.text = DateUtils.getFormattedTime(chatMessage.timestamp)
+                viewHolder.itemView.latest_msg_time.text =
+                    DateUtils.getFormattedTime(chatMessage.timestamp)
 
                 if (!chatPartnerUser?.profileImageUrl?.isEmpty()!!) {
                     val requestOptions = RequestOptions().placeholder(R.drawable.no_image2)
@@ -56,16 +58,14 @@ class LatestMessageRow(val chatMessage: ChatMessage, val context: Chats_Fragment
                         .into(viewHolder.itemView.imageview_latest_message)
 
                     viewHolder.itemView.imageview_latest_message.setOnClickListener {
-                        BigImageDialog.newInstance(chatPartnerUser?.profileImageUrl!!).show((context as Activity).fragmentManager
-                            , "")
+                        BigImageDialog.newInstance(chatPartnerUser?.profileImageUrl!!).show(
+                            (context as Activity).fragmentManager, ""
+                        )
                     }
 
                 }
             }
-
         })
-
-
     }
 
 }

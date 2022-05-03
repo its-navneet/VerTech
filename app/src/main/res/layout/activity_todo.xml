@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".todo"
+    tools:context=".views.todo"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:background="@drawable/view">
 
         <TextView
@@ -42,7 +42,7 @@
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/projects"
                 android:layout_marginRight="20dp"
-                android:layout_margin="8dp"/>
+                android:layout_margin="8dp" />
 
             <EditText
                 android:id="@+id/projectName"
@@ -70,7 +70,7 @@
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/description"
                 android:layout_marginRight="20dp"
-                android:layout_margin="8dp"/>
+                android:layout_margin="8dp" />
 
             <EditText
                 android:id="@+id/projectDescription"
@@ -98,7 +98,7 @@
                 android:layout_gravity="center_vertical"
                 android:src="@drawable/team"
                 android:layout_marginRight="20dp"
-                android:layout_margin="8dp"/>
+                android:layout_margin="8dp" />
 
             <EditText
                 android:id="@+id/projectMembers"
@@ -121,7 +121,7 @@
             android:layout_gravity="end"
             android:text="Add"
             android:textColor="@color/white"
-            android:backgroundTint="@color/maintheme"/>
+            android:backgroundTint="@color/maintheme" />
 
     </LinearLayout>
 

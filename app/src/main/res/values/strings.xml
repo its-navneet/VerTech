@@ -21,6 +21,7 @@
     <string name="enter_your_domain">Enter your domain</string>
 
     <string-array name="domains_res">
+        <item>Choose Domain</item>
         <item>Android Development</item>
         <item>IOS Development</item>
         <item>Web Development</item>
@@ -32,6 +33,7 @@
     </string-array>
 
     <string-array name="gyear_res">
+        <item>Choose Year</item>
         <item>2020</item>
         <item>2021</item>
         <item>2022</item>

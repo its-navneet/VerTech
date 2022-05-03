@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/mainView"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/mainView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +16,7 @@
         android:src="@drawable/no_image2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/username_textview_latest_message"
@@ -31,7 +30,7 @@
         app:layout_constraintBottom_toTopOf="@+id/latest_message_textview"
         app:layout_constraintStart_toEndOf="@+id/imageview_latest_message"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"/>
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/latest_message_textview"
@@ -47,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageview_latest_message"
-        app:layout_constraintTop_toBottomOf="@+id/username_textview_latest_message"/>
+        app:layout_constraintTop_toBottomOf="@+id/username_textview_latest_message" />
 
 
     <TextView
@@ -60,7 +59,7 @@
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="@+id/username_textview_latest_message"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/username_textview_latest_message"/>
+        app:layout_constraintTop_toTopOf="@+id/username_textview_latest_message" />
 
 
     <View
@@ -72,5 +71,5 @@
         android:background="#22000000"
         app:layout_constraintEnd_toEndOf="@id/mainView"
         app:layout_constraintStart_toStartOf="@id/mainView"
-        app:layout_constraintTop_toBottomOf="@+id/latest_message_textview"/>
+        app:layout_constraintTop_toBottomOf="@+id/latest_message_textview" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,20 +1,20 @@
-package com.example.android.vertech
+package com.example.android.vertech.views
 
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.android.vertech.RegisterActivity.Companion.TAG
+import androidx.appcompat.app.AppCompatActivity
+import com.example.android.vertech.R
 import com.example.android.vertech.models.Feeds
+import com.example.android.vertech.views.RegisterActivity.Companion.TAG
+import com.example.android.vertech.views.fragments.Home_Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -74,7 +74,6 @@ class new_post : AppCompatActivity() {
         uploadImageToFirebaseStorage()
     }
 
-
     fun uploadImageToFirebaseStorage() {
         // compressing image
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
@@ -94,7 +93,7 @@ class new_post : AppCompatActivity() {
 
                     @Suppress("NestedLambdaShadowedImplicitParameter")
                     ref.downloadUrl.addOnSuccessListener {
-                        Log.d(RegisterActivity.TAG, "File Location: $it")
+                        Log.d(TAG, "File Location: $it")
                         saveUserToFirebaseDatabase(it.toString())
                     }
                 }
@@ -105,30 +104,36 @@ class new_post : AppCompatActivity() {
         }
 
     }
+
     private fun saveUserToFirebaseDatabase(feedsImageUrl: String?) {
         val uid = FirebaseAuth.getInstance().uid ?: return
         val ref = FirebaseDatabase.getInstance().getReference("/feeds/$uid")
-        val database : DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
+        val database: DatabaseReference = FirebaseDatabase.getInstance().getReference("users")
         database.child(uid).get().addOnSuccessListener {
-            if(it.exists()){
-                val name=it.child("name").value
-                val feed = Feeds(uid,name.toString(), feedsImageUrl,feed_text_content.text.toString(),System.currentTimeMillis() / 1000)
+            if (it.exists()) {
+                val name = it.child("name").value
+                val feed = Feeds(
+                    uid,
+                    name.toString(),
+                    feedsImageUrl,
+                    feed_text_content.text.toString(),
+                    System.currentTimeMillis() / 1000
+                )
                 ref.setValue(feed).addOnSuccessListener {
-                        Log.d(TAG, "Finally we saved the user to Firebase Database")
-                        Toast.makeText(this,"Post uploaded successfully",LENGTH_SHORT).show()
-                        val intent = Intent(this, Home_Fragment::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(intent)
-                    }
+                    Log.d(TAG, "Finally we saved the user to Firebase Database")
+                    Toast.makeText(this, "Post uploaded successfully", LENGTH_SHORT).show()
+                    val intent = Intent(this, Home_Fragment::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
                     .addOnFailureListener {
                         Log.d(TAG, "Failed to set value to database: ${it.message}")
                         loading_view_post.visibility = View.GONE
                     }
+            } else {
+                Toast.makeText(this, "Failed", LENGTH_SHORT).show()
             }
-            else{
-                Toast.makeText(this,"Failed",LENGTH_SHORT).show()
-            }
-        }.addOnFailureListener(){
+        }.addOnFailureListener {
             Log.d(TAG, "failed")
         }
 

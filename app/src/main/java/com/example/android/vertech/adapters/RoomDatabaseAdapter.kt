@@ -1,26 +1,29 @@
-package com.example.android.vertech
+package com.example.android.vertech.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.vertech.R
 import com.example.android.vertech.db.UserEntity
 import kotlinx.android.synthetic.main.recyclerview_row.view.*
 
-class RecyclerViewAdapter(val listener: RowClickListener): RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
+class RoomDatabaseAdapter(val listener: RowClickListener) :
+    RecyclerView.Adapter<RoomDatabaseAdapter.MyViewHolder>() {
 
-    var items  = ArrayList<UserEntity>()
+    var items = ArrayList<UserEntity>()
 
     fun setListData(data: ArrayList<UserEntity>) {
         this.items = data
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewAdapter.MyViewHolder {
-        val inflater = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row, parent, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val inflater =
+            LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_row, parent, false)
         return MyViewHolder(inflater, listener)
     }
 
-    override fun onBindViewHolder(holder: RecyclerViewAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.itemView.setOnClickListener {
             listener.onItemClickListener(items[position])
         }
@@ -31,7 +34,8 @@ class RecyclerViewAdapter(val listener: RowClickListener): RecyclerView.Adapter<
     override fun getItemCount(): Int {
         return items.size
     }
-    class MyViewHolder(view: View, val listener: RowClickListener): RecyclerView.ViewHolder(view) {
+
+    class MyViewHolder(view: View, val listener: RowClickListener) : RecyclerView.ViewHolder(view) {
 
         val tvName = view.tvName
         val tvEmail = view.tvEmail
@@ -50,13 +54,14 @@ class RecyclerViewAdapter(val listener: RowClickListener): RecyclerView.Adapter<
             deleteUserID.setOnClickListener {
                 listener.onDeleteUserClickListener(data)
             }
-            shareData.setOnClickListener{
+            shareData.setOnClickListener {
                 listener.onShareClickListener(data)
             }
 
         }
     }
-    interface RowClickListener{
+
+    interface RowClickListener {
         fun onDeleteUserClickListener(user: UserEntity)
         fun onItemClickListener(user: UserEntity)
         fun onShareClickListener(user: UserEntity)

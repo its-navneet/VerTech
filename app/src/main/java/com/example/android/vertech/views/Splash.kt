@@ -1,10 +1,10 @@
-package com.example.android.vertech
+package com.example.android.vertech.views
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import com.example.android.vertech.R
 
 class splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +16,7 @@ class splash : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
-        }, 3000) // 3200 is the delayed time in milliseconds.
+        }, 2600) // 3200 is the delayed time in milliseconds.
     }
 
 }

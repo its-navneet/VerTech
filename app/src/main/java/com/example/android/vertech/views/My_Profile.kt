@@ -1,26 +1,18 @@
-package com.example.android.vertech
+package com.example.android.vertech.views
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.vertech.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_my_profile.*
-import kotlinx.android.synthetic.main.activity_my_profile.back
-import kotlinx.android.synthetic.main.activity_my_profile.biotext
-import kotlinx.android.synthetic.main.activity_my_profile.email
-import kotlinx.android.synthetic.main.activity_my_profile.profile_domain
-import kotlinx.android.synthetic.main.activity_my_profile.profile_graduation
-import kotlinx.android.synthetic.main.activity_my_profile.profile_username
-import kotlinx.android.synthetic.main.activity_my_profile.profilepic
-import kotlinx.android.synthetic.main.activity_user_profile.*
-import kotlinx.android.synthetic.main.latest_message_row.*
 
 class My_Profile : AppCompatActivity() {
     lateinit var database: DatabaseReference
@@ -28,10 +20,29 @@ class My_Profile : AppCompatActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_profile)
+        fetchData()
+        edit_profile.setOnClickListener {
+            val intent = Intent(this@My_Profile, EditProfile::class.java)
+            startActivity(intent)
+            finish()
+        }
 
+        backBtn.setOnClickListener {
+            startActivity(Intent(this@My_Profile, MainActivity::class.java))
+            finish()
+        }
+
+        logout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this@My_Profile, RegisterActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun fetchData() {
         val userUid = FirebaseAuth.getInstance().uid
         database = FirebaseDatabase.getInstance().getReference("users")
-        database.child(userUid!!)?.get().addOnSuccessListener {
+        database.child(userUid!!).get().addOnSuccessListener {
             if (it.exists()) {
                 val requestOptions = RequestOptions()
                 val picUrl = it.child("profileImageUrl").value
@@ -46,31 +57,17 @@ class My_Profile : AppCompatActivity() {
                 val emailText = it.child("email").value
                 val domain = it.child("domain").value
 
-                profile_username.text="$username"
-                biotext.text="$bio"
-                email.text="$emailText"
-                profile_graduation.text="$graduation"
-                profile_domain.text="$domain"
+                profile_username.text = "$username"
+                biotext.text = "$bio"
+                email.text = "$emailText"
+                profile_graduation.text = "$graduation"
+                profile_domain.text = "$domain"
 
             } else {
-                Toast.makeText(this, "Failed", LENGTH_SHORT)
+                Toast.makeText(this, "Failed", LENGTH_SHORT).show()
             }
-        }.addOnFailureListener() {
+        }.addOnFailureListener {
             Log.d(RegisterActivity.TAG, "failed")
-        }
-
-        edit_profile.setOnClickListener(){
-            startActivity(Intent(this@My_Profile,EditProfile::class.java))
-        }
-
-        back.setOnClickListener(){
-            startActivity(Intent(this@My_Profile,Home_Fragment::class.java))
-            finish()
-        }
-
-        logout.setOnClickListener(){
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this@My_Profile,RegisterActivity::class.java))
         }
     }
 }

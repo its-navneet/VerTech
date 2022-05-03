@@ -23,7 +23,8 @@ object DateUtils {
 
     fun getFormattedTimeChatLog(timeInMilis: Long): String {
         val date = Date(timeInMilis * 1000L) // *1000 is to convert seconds to milliseconds
-        val fullFormattedTime = SimpleDateFormat("d MMM, h:mm a", Locale.US) // the format of your date
+        val fullFormattedTime =
+            SimpleDateFormat("d MMM, h:mm a", Locale.US) // the format of your date
         val onlyTime = SimpleDateFormat("h:mm a", Locale.US) // the format of your date
 
         return when {

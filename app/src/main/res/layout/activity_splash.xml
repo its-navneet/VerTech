@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".splash">
+    tools:context=".views.splash">
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
@@ -13,6 +13,5 @@
         app:lottie_fileName="final1.json"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        android:background="@color/white"
-        />
+        android:background="@color/white" />
 </androidx.constraintlayout.widget.ConstraintLayout>

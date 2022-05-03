@@ -1,33 +1,33 @@
 package com.example.android.vertech.messages
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.core.content.ContextCompat
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.vertech.R
+import com.example.android.vertech.adapters.NewMesaageAdapter
+import com.example.android.vertech.adapters.NewUserMessageItemClickInterface
 import com.example.android.vertech.models.User
-import com.example.android.vertech.views.BigImageDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.Item
-import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_new_message.*
-import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
-class NewMessageActivity : AppCompatActivity() {
+class NewMessageActivity : AppCompatActivity(), NewUserMessageItemClickInterface {
+    private var users: ArrayList<User> = ArrayList()
+    private var matchedUsers: ArrayList<User> = ArrayList()
+    private var usersAdapter: NewMesaageAdapter = NewMesaageAdapter(users, this)
 
     companion object {
         const val USER_KEY = "USER_KEY"
-        private val TAG = NewMessageActivity::class.java.simpleName
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,77 +35,153 @@ class NewMessageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
 
-        swiperefresh_newMessage.setColorSchemeColors(ContextCompat.getColor(this, R.color.colorAccent))
+        swiperefresh_newMessage.setColorSchemeColors(
+            ContextCompat.getColor(
+                this,
+                R.color.colorAccent
+            )
+        )
+        recyclerview_newmessage.layoutManager = LinearLayoutManager(this@NewMessageActivity)
 
         supportActionBar?.title = "Select User"
+        val currentUser = FirebaseAuth.getInstance().uid.toString()
+        val ref = FirebaseDatabase.getInstance().getReference("/favourites")
+        val user_ref = FirebaseDatabase.getInstance().getReference("/users")
 
-        fetchUsers()
-        //Todo - Add more users and messages for screenshots
+        swiperefresh_newMessage?.isRefreshing = true
+        ref.child(currentUser).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.value.toString() == "null") {
+                    swiperefresh_newMessage.isRefreshing = false
+                    Toast.makeText(
+                        this@NewMessageActivity,
+                        "Your starred contacts appears here",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                dataSnapshot.children.forEach {
+                    val userId = it.key.toString()
+                    user_ref.orderByChild("name")
+                        .addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onCancelled(databaseError: DatabaseError) {}
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                dataSnapshot.children.forEach {
+                                    it.getValue(User::class.java)?.let {
+                                        if (it.uid == userId) {
+                                            users.add(it)
+                                        }
+                                    }
+                                }
+                                initRecyclerView()
+                                performSearch()
+                                swiperefresh_newMessage.isRefreshing = false
+                            }
+                        })
+                }
+            }
 
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
         swiperefresh_newMessage.setOnRefreshListener {
             fetchUsers()
         }
     }
 
-    private fun fetchUsers() {
-        swiperefresh_newMessage.isRefreshing = true
-
-        val ref = FirebaseDatabase.getInstance().getReference("/users")
-        ref.orderByChild("name").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onCancelled(databaseError: DatabaseError) {
-
-            }
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val adapter = GroupAdapter<ViewHolder>()
-
-                dataSnapshot.children.forEach {
-                    Log.d(TAG, it.toString())
-                    @Suppress("NestedLambdaShadowedImplicitParameter")
-                    it.getValue(User::class.java)?.let {
-                        if (it.uid != FirebaseAuth.getInstance().uid) {
-                            adapter.add(UserItem(it, this@NewMessageActivity))
-                        }
-                    }
-                }
-
-                adapter.setOnItemClickListener { item, view ->
-                    val userItem = item as UserItem
-                    val intent = Intent(view.context, ChatLogActivity::class.java)
-                    intent.putExtra(USER_KEY, userItem.user)
-                    startActivity(intent)
-                    finish()
-                }
-
-                recyclerview_newmessage.adapter = adapter
-                swiperefresh_newMessage.isRefreshing = false
-            }
-
-        })
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        TODO("Not yet implemented")
     }
-}
 
-class UserItem(val user: User, val context: Context) : Item<ViewHolder>() {
-
-    override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.username_textview_new_message.text = user.name
-        viewHolder.itemView.domain.text=user.domain
-        viewHolder.itemView.graduation_year.text=user.graduation
-        if (!user.profileImageUrl!!.isEmpty()) {
-            val requestOptions = RequestOptions().placeholder(R.drawable.no_image2)
-            Glide.with(viewHolder.itemView.imageview_new_message.context)
-                    .load(user.profileImageUrl)
-                    .apply(requestOptions)
-                    .into(viewHolder.itemView.imageview_new_message)
-
-            viewHolder.itemView.imageview_new_message.setOnClickListener {
-                BigImageDialog.newInstance(user?.profileImageUrl!!).show((context as Activity).fragmentManager
-                        , "")
-            }
+    private fun initRecyclerView() {
+        usersAdapter = NewMesaageAdapter(users, this).also {
+            recyclerview_newmessage?.adapter = it
+            recyclerview_newmessage?.adapter?.notifyDataSetChanged()
         }
     }
 
-    override fun getLayout(): Int {
-        return R.layout.user_row_new_message
+    private fun performSearch() {
+        searchbar_new_message.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                search(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                search(newText)
+                return false
+            }
+        })
     }
+
+    private fun search(text: String?) {
+        matchedUsers = ArrayList()
+        text?.let {
+            users.forEach { person ->
+                if (person.name.toString().contains(text, true) ||
+                    person.domain.toString().contains(text, true)
+                ) {
+                    matchedUsers.add(person)
+                }
+            }
+            updateRecyclerView()
+            if (matchedUsers.isEmpty()) {
+                Toast.makeText(this, "Contact you are searching in unavailable", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            updateRecyclerView()
+        }
+    }
+
+    private fun updateRecyclerView() {
+        recyclerview_newmessage.apply {
+            usersAdapter.users = matchedUsers
+            usersAdapter.notifyDataSetChanged()
+        }
+    }
+
+
+    override fun onNoteClick(user: User) {
+        val intent = Intent(this, ChatLogActivity::class.java)
+        intent.putExtra(USER_KEY, user)
+        startActivity(intent)
+    }
+
+    private fun fetchUsers() {
+        swiperefresh_newMessage.isRefreshing = true
+        val currentUser = FirebaseAuth.getInstance().uid.toString()
+        val ref = FirebaseDatabase.getInstance().getReference("/favourites")
+        val user_ref = FirebaseDatabase.getInstance().getReference("/users")
+
+        ref.child(currentUser).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.forEach {
+                    user_ref.orderByChild("name")
+                        .addListenerForSingleValueEvent(object : ValueEventListener {
+                            override fun onCancelled(databaseError: DatabaseError) {}
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                dataSnapshot.children.forEach {
+                                    it.getValue(User::class.java)?.let {
+                                    }
+                                }
+                            }
+                        })
+                }
+                recyclerview_newmessage.layoutManager = LinearLayoutManager(this@NewMessageActivity)
+                initRecyclerView()
+                performSearch()
+                recyclerview_newmessage.adapter = usersAdapter
+                swiperefresh_newMessage.isRefreshing = false
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
 }

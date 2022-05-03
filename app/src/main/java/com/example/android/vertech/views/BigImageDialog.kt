@@ -4,11 +4,11 @@ import android.app.DialogFragment
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.vertech.R
@@ -24,7 +24,11 @@ class BigImageDialog : DialogFragment() {
     }
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val v = inflater.inflate(R.layout.image_dialog_layout, container, false)
         this.dialog.window?.requestFeature(Window.FEATURE_NO_TITLE)
         this.dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -37,9 +41,9 @@ class BigImageDialog : DialogFragment() {
         val requestOptions = RequestOptions().placeholder(circularProgressDrawable)
 
         Glide.with(this.dialog.context)
-                .load(imageUrl)
-                .apply(requestOptions)
-                .into(v.bigImageView)
+            .load(imageUrl)
+            .apply(requestOptions)
+            .into(v.bigImageView)
 
         return v
     }
@@ -48,10 +52,10 @@ class BigImageDialog : DialogFragment() {
     companion object {
         @JvmStatic
         fun newInstance(imageUrl: String) =
-                BigImageDialog().apply {
-                    arguments = Bundle().apply {
-                        putString("url", imageUrl)
-                    }
+            BigImageDialog().apply {
+                arguments = Bundle().apply {
+                    putString("url", imageUrl)
                 }
+            }
     }
 }

@@ -5,7 +5,7 @@
         android:id="@+id/search"
         android:enabled="true"
         android:icon="@drawable/search"
-        android:title="search"
+        android:title="Contacts"
         app:cnb_iconColor="#DA6930B3"
         app:cnb_textColor="#DA6930B3"
         app:cnb_backgroundColor="@color/white"/>
