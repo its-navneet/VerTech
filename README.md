@@ -69,5 +69,8 @@ Registration Page-
 Currently our app is in the testing phase within our associates and technical clubs. 
 Play Store : https://play.google.com/store/apps/details?id=com.user.android.vertech&hl=en_IN&gl=US
 
+You can also download the apk directly:
+https://drive.google.com/file/d/1AF1-7735N9hMh7efTQII7ijR9NMFoAdB/view?usp=drive_link
+
 Very soon our application will be functional in our university and and we hope it will soon reaches other universities too. We intend, by the end of the year, most schools and institutions will use our community app to explore, learn and create innovative ideas. We are planning to append more user-friendly experience and group conversations of dedicated domains.
 
